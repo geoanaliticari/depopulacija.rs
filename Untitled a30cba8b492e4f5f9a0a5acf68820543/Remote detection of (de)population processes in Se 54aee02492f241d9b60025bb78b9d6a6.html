@@ -1,0 +1,631 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Remote detection of (de)population processes in Serbia</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="54aee024-92f2-41d9-b600-25bb78b9d6a6" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🇬🇧</span></div><h1 class="page-title"><strong><em>Remote detection of (de)population processes in Serbia</em></strong></h1></header><div class="page-body"><hr id="8bc95a75-875b-41b3-a85a-b01f5dfe8a7b"/><ul id="5c4bcf6e-efff-4872-95d5-9c97706f04d9" class="toggle"><li><details open=""><summary><strong>List of depopulation indicators</strong></summary><nav id="306af27a-d352-4393-b05c-b6ed17d67ac8" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d1fab0b-3fd8-4585-8d4e-f5d5944fa9c2">1. Population Age Structure by Altitude Zones, 2011</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1dc88b78-fdb8-4061-bf34-136d7284f060">2. Population Change Index, 2015/1975</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4438f5b7-31b5-4227-951f-5ae391b948ad">3. Population Density in Serbia, 2015</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#50636759-03cc-4434-8a3f-74ff3ddf3217">4. Lot Coverage Change Index, 2014/1975</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6b4be1ea-d0d4-4ac3-9508-a8b266313da6">5. ‘Real Abandoned’ and Temporarily Used Built-Up Areas, 2015</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2b1fc687-a695-4db5-a10b-48f8b6383936">6. Hypsometric Structure (Altitudinal Zonality) of Municipalities and Settlements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#91edad8a-f24e-4fc9-abc3-7221b9af71d0">7. ‘Spatial Lighting’</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fc64fd56-c1cc-4c85-84d1-60b5176d9100">8. Seasonal Character of Settlements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dd72585f-3218-4dca-95fe-a8c2b0838112">9. Road Network Density</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ea655de-4a47-4ba6-81b5-da5ca88af41c">10. Altitudinal Conditionality of the Population Density’ Changes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c9ba21cb-139a-480b-968c-4c9ec5ed0a09">11. Accessibility as a Determinant of Depopulation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5da87e36-0236-47dc-8fb1-59f7e5d99a03">12. Land Cover as a ‘Tool for Monitoring’ Population Change</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b4634790-24d3-4146-b236-3bf401698160">Content</a></div></nav><p id="0a01b396-42c3-4cc6-bd9d-799001a4831b" class="">
+</p></details></li></ul><hr id="37eca1e8-a5cf-4d5b-823d-884959200b2f"/><h2 id="4d1fab0b-3fd8-4585-8d4e-f5d5944fa9c2" class="">1. Population Age Structure by Altitude Zones, 2011</h2><p id="0aab507c-9581-4ebd-bb3d-8e9aa6f09530" class=""><em>Where is the elderly population located?</em></p><p id="359fb875-483a-4ef6-b32c-03ee2784fbdc" class=""><em>Is the elderly population prevalent in mountainous areas?</em></p><p id="253377c3-aa68-4310-b7f8-9f90f9d5847c" class="">The indicator <em><strong>Population Age Structure by Altitude Zones</strong></em> enables the monitoring of the interrelation of the “aging” process and the average altitude. </p><p id="cb2721b9-334b-4baf-b047-f1c411ff4e6a" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Age%20Structure%20by%20Altitude%20Zones,%202011%201a111ce055fe432ca4607d2562ced484.html">Continue reading...</a></mark></p><h2 id="1dc88b78-fdb8-4061-bf34-136d7284f060" class="">2. Population Change Index, 2015/1975</h2><p id="b53497dc-7395-4c2b-bbb4-4665f1caeeb7" class=""><em>Depopulation – a challenge or a reality?</em></p><p id="43b7522a-5d24-4992-ad26-10848bf8e93a" class=""><em>How intensive is the population decline in Serbia?</em></p><p id="69f2e840-6ba4-4279-b92a-ed001ad95a8c" class=""><em>Where is depopulation the most pronounced?</em></p><p id="850c1166-f9df-4f9a-a9f9-2cf4d36f6395" class="">The indicator<em><strong> Population Change Index</strong></em> is used to monitor and measure the dynamics of the depopulation process. It directly shows how and where the population decreased or increased in a particular area. </p><p id="aa560eb6-cf00-41ce-9882-31a748fe84ed" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Change%20Index,%202015%201975%202b3fa4b1eafe4d5ea28c2709a4d12c4a.html">Continue reading...</a></mark></p><h2 id="4438f5b7-31b5-4227-951f-5ae391b948ad" class="">3. Population Density in Serbia, 2015</h2><p id="124dc248-8ba1-41c0-9b1b-52c234ddf380" class=""><em>What are the poles of the population concentration?</em></p><p id="a168b491-b6ad-4ccd-b0f4-b6936961c3d7" class=""><em>Which areas are gradually shrinking?</em></p><p id="b67ab1d5-a94a-4cab-9848-ca64da178625" class=""><em>Which areas are growing in height?</em></p><p id="b260be4a-7743-4269-bdef-e5f6551bbeb1" class=""><em><strong>Population density</strong></em> is one of the most commonly used indicators in monitoring spatial change and delimiting rural and urban areas (OECD; EU Commission; ESPON). It indicates a territory’s attractiveness for settling. </p><p id="b9e9da84-926b-4afb-88fc-3398a7366f89" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Density%20in%20Serbia,%202015%2085a0c38e3b294271a420aa49a1c4406c.html">Continue reading...</a></mark></p><h2 id="50636759-03cc-4434-8a3f-74ff3ddf3217" class="">4. Lot Coverage Change Index, 2014/1975</h2><p id="9257258c-d5f5-4908-a30a-675bf2cc882b" class=""><em>Where do you plan to live?</em></p><p id="d42b261d-aad9-4991-ae80-4440d8dc6bf3" class=""><em>Which areas are attractive for new?</em></p><p id="2248fbd9-4a71-42fc-ada6-b177a966c91e" class="">The <em><strong>Lot Coverage Change Index</strong></em> is an urban indicator that is directly related to the morphology and physiognomy of the observed areas, showing attractiveness for new settling and construction. </p><p id="a681028e-5380-4a4c-bd21-22492494160e" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Lot%20Coverage%20Change%20Index,%202014%201975%2050e76aa1f2fc4524a17456e40de0997d.html">Continue reading...</a></mark></p><h2 id="6b4be1ea-d0d4-4ac3-9508-a8b266313da6" class="">5. ‘Real Abandoned’ and Temporarily Used Built-Up Areas, 2015</h2><p id="b29a4e4b-83ac-4a52-9a33-075ecc94a0c6" class=""><em>Where are the areas that really have no inhabitants?</em></p><p id="43e1175e-539f-41eb-b70f-5f69c696217b" class=""><em>Which facilities are abandoned?</em></p><p id="be2ab933-bc66-430a-a553-b9ae3f395358" class="">The indicator <em><strong>‘Real Abandoned’ and Temporarily Used Built-Up Areas</strong></em> is used to serve for more precisely determin abandoned or sparsely populated areas based on nightlight satellite images. </p><p id="71a722cc-6a4f-408f-b14c-b72374e41334" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Real%20Abandoned%E2%80%99%20and%20Temporarily%20Used%20Built-Up%20Area%20cb343fac92844b4aa02d03a3ffcd0cb3.html">Continue reading...</a></mark></p><h2 id="2b1fc687-a695-4db5-a10b-48f8b6383936" class="">6. Hypsometric Structure (Altitudinal Zonality) of Municipalities and Settlements</h2><p id="70f58a05-5404-4670-82eb-845e2e2a8373" class=""><em>Which are the “highest” settlements in Serbia?</em></p><p id="4f1d733e-822b-4186-8b8a-87c22853c3cd" class=""><em>What is the altitudinal limit for settling?</em></p><p id="88e65cb0-e881-4469-8aba-51e58ac104bb" class="">The indicator <em><strong>Hypsometric Structure (Altitudinal Zonality) of municipalities and settlements</strong></em> examines to what degree terrain morphometry determines the spatial distribution of settlements. </p><p id="43b302fc-54ea-42a6-a2be-41579186f91b" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Hypsometric%20Structure%20(Altitudinal%20Zonality)%20of%20Mu%20f2e4bdb8bc1544dea9105aa260f18b0e.html">Continue reading...</a></mark></p><h2 id="91edad8a-f24e-4fc9-abc3-7221b9af71d0" class="">7. ‘Spatial Lighting’</h2><p id="04822d44-4789-4a1d-8c63-80857777d360" class=""><em>Where the “dark has fallen” in Serbia?</em></p><p id="475dbb95-df2d-4806-86bd-e8ec11beec17" class=""><em>What are the areas where the overall activity is reduced?</em></p><p id="1c79f030-1919-4265-880d-8e011b11007a" class="">The indicator ‘<em><strong>Spatial Lighting</strong></em>’, based on the nightlight analysis, offers a framework for a realistic insight into the permanent settling and economic activity. </p><p id="50f66404-643b-4c63-9649-b966fb15eeff" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/%E2%80%98Spatial%20Lighting%E2%80%99%20e75f9ff2c4564f159e674005c43c2af0.html">Continue reading...</a></mark></p><h2 id="fc64fd56-c1cc-4c85-84d1-60b5176d9100" class="">8. Seasonal Character of Settlements</h2><p id="0f293bbc-2e94-41f7-866d-a7bd05ca6a0f" class=""><em>Which areas are permanently abandoned and which are still occasionally used?</em></p><p id="f73844e0-36bb-4ed0-94a2-5e27e5de59cf" class=""><em><strong>The seasonal settlement activation</strong></em>, established based on nightlight satellite images taken at different times of the year, is an important indicator for the analysis of settling and population distribution. </p><p id="38f1b9ce-4fe1-4dd7-94b8-bcc63c427191" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Seasonal%20Character%20of%20Settlements%20af1a9020276a49168184ddc7c6ca8984.html">Continue reading...</a></mark></p><h2 id="dd72585f-3218-4dca-95fe-a8c2b0838112" class="">9. Road Network Density</h2><p id="2999e2d2-5361-4c57-bc86-6392d5ab66d4" class=""><em>What is the relationship between the road network and the population size of the settlement? </em></p><p id="4a154522-cac5-4ca8-ab3a-c6a09737d6cb" class=""><em>Does poor infrastructure lead to population decline? </em></p><p id="81f742f5-1a52-456f-afb2-3bccfc96dcfd" class=""><em><strong>The density and quality of the road network</strong></em> of an area indirectly affect demographic changes, the development level and the attractiveness of the area for settling and economic activities. The density of the road network and population dynamics is usually directly related.</p><p id="f7a7b847-9545-441e-b872-a8f2e7bfd954" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Road%20Network%20Density%2075476768eeac4122bb5bbbd298c1d62e.html">Continue reading...</a></mark></p><h2 id="2ea655de-4a47-4ba6-81b5-da5ca88af41c" class="">10. Altitudinal Conditionality of the Population Density’ Changes</h2><p id="b51224f2-9a10-4e13-9373-c9f3dc021a57" class=""><em>Does altitude determine settling trends?</em></p><p id="fc77acb6-ed9a-4769-9732-8270103537c6" class=""><em>Does the population prefer living at lower or higher altitudes?</em></p><p id="121ece54-9525-427f-b913-c55cf22b9bba" class="">Population concentration in an area is affected by various factors, but altitude still has a determining role. Conditions for the settlements genesis, as well as their morphology, altitude change, directly affects the variability of population density.</p><p id="3a459205-c57b-4960-b3ed-0c66f7cc7fe7" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Altitudinal%20Conditionality%20of%20the%20Population%20Densi%202bdd003a969a4ac18761d1c09c16274f.html">Continue reading...</a></mark></p><h2 id="c9ba21cb-139a-480b-968c-4c9ec5ed0a09" class="">11. Accessibility as a Determinant of Depopulation</h2><p id="d069b5d2-147e-4e71-8d9b-c7450cf0ddbd" class=""><em>Isolation = depopulation? </em></p><p id="a88a0ed0-4494-4610-b94d-5079582baa71" class=""><em>Are accessible areas also attractive?</em></p><p id="ab45cf2b-d52f-4437-9ff8-29950b784b9e" class="">Accessibility is a factor that significantly determines the attractiveness of an area for settling and overall development, and it indirectly affects its population dynamics. Traffic-isolated areas are exposed to continuous negative changes, while accessible areas have a more favourable population trend.</p><p id="3afcd5dd-e091-424d-b1df-57923ba24c02" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Accessibility%20as%20a%20Determinant%20of%20Depopulation%2004215643420c4c399c8c574a7f3f337c.html">Continue reading...</a></mark></p><h2 id="5da87e36-0236-47dc-8fb1-59f7e5d99a03" class="">12. Land Cover as a ‘Tool for Monitoring’ Population Change</h2><p id="9d6fff6c-1948-45a0-9683-608e798d9e04" class=""><em>Does depopulation affect land cover changes?</em></p><p id="ea8b0c73-c7a1-464c-acfc-8d453a4a4f03" class=""><em>Does depopulation imply untouched nature?</em></p><p id="0098da9b-ceac-46bd-a41f-0606377a6497" class="">The indicator <strong><em>Land Cover as a ‘Tool for Monitoring’ Population Change</em></strong> has been used to monitor various processes and their spatial patterns, primarily demographic changes and overall (economic) development. Land conversions toward natural ecosystems indicate a reduced activity of population or reduced economic activities.</p><p id="7417d17a-b446-4ba6-895a-76d7f62ea0b7" class=""><mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Land%20Cover%20as%20a%20%E2%80%98Tool%20for%20Monitoring%E2%80%99%20Population%20C%20dc178772b0674a32848720c1795e5d6a.html">Continue reading...</a></mark></p><p id="cf67e9e2-a8ba-4126-aa26-98904092dba8" class="">
+</p><p id="7d0e6c9f-16e3-4efc-9201-2a7d766ced3e" class=""><a href=""><mark class="highlight-blue">Back to top ↑</mark></a></p><hr id="be2c54b9-d6f3-47c8-9309-8fcb682b9a49"/><h1 id="b4634790-24d3-4146-b236-3bf401698160" class="">Content</h1><figure id="1a111ce0-55fe-432c-a460-7d2562ced484" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Age%20Structure%20by%20Altitude%20Zones,%202011%201a111ce055fe432ca4607d2562ced484.html">Population Age Structure by Altitude Zones, 2011</a></figure><figure id="2b3fa4b1-eafe-4d5e-a28c-2709a4d12c4a" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Change%20Index,%202015%201975%202b3fa4b1eafe4d5ea28c2709a4d12c4a.html">Population Change Index, 2015/1975</a></figure><figure id="85a0c38e-3b29-4271-a420-aa49a1c4406c" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Population%20Density%20in%20Serbia,%202015%2085a0c38e3b294271a420aa49a1c4406c.html">Population Density in Serbia, 2015</a></figure><figure id="50e76aa1-f2fc-4524-a174-56e40de0997d" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Lot%20Coverage%20Change%20Index,%202014%201975%2050e76aa1f2fc4524a17456e40de0997d.html">Lot Coverage Change Index, 2014/1975</a></figure><figure id="cb343fac-9284-4b4a-a02d-03a3ffcd0cb3" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Real%20Abandoned%E2%80%99%20and%20Temporarily%20Used%20Built-Up%20Area%20cb343fac92844b4aa02d03a3ffcd0cb3.html">Real Abandoned’ and Temporarily Used Built-Up Areas, 2015</a></figure><figure id="f2e4bdb8-bc15-44de-a910-5aa260f18b0e" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Hypsometric%20Structure%20(Altitudinal%20Zonality)%20of%20Mu%20f2e4bdb8bc1544dea9105aa260f18b0e.html">Hypsometric Structure 
+(Altitudinal Zonality) of Municipalities and Settlements</a></figure><figure id="e75f9ff2-c456-4f15-9e67-4005c43c2af0" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/%E2%80%98Spatial%20Lighting%E2%80%99%20e75f9ff2c4564f159e674005c43c2af0.html">‘Spatial Lighting’</a></figure><figure id="af1a9020-276a-4916-8184-ddc7c6ca8984" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Seasonal%20Character%20of%20Settlements%20af1a9020276a49168184ddc7c6ca8984.html">Seasonal Character of Settlements</a></figure><figure id="75476768-eeac-4122-bb5b-bbd298c1d62e" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Road%20Network%20Density%2075476768eeac4122bb5bbbd298c1d62e.html">Road Network Density</a></figure><figure id="2bdd003a-969a-4ac1-8761-d1c09c16274f" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Altitudinal%20Conditionality%20of%20the%20Population%20Densi%202bdd003a969a4ac18761d1c09c16274f.html">Altitudinal Conditionality of the Population Density’ Changes</a></figure><figure id="04215643-420c-4c39-9c8c-574a7f3f337c" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Accessibility%20as%20a%20Determinant%20of%20Depopulation%2004215643420c4c399c8c574a7f3f337c.html">Accessibility as a Determinant of Depopulation</a></figure><figure id="dc178772-b067-4a32-8487-20c1795e5d6a" class="link-to-page"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6/Land%20Cover%20as%20a%20%E2%80%98Tool%20for%20Monitoring%E2%80%99%20Population%20C%20dc178772b0674a32848720c1795e5d6a.html">Land Cover as a ‘Tool for Monitoring’
+Population Change</a></figure><hr id="5a9a1d30-e1af-47db-a8b8-25d32193c1ec"/><p id="77c0cae0-dffa-402e-b7f2-84ddec9bad2f" class=""><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a></p><p id="6bc607fe-2279-4f97-bb54-46954a7cd35a" class=""><a href="O%20ideji%205f33798553084a079b89d8a1bab18c26.html"><span class="icon">❓</span>O ideji</a></p><hr id="0cdb0439-cd83-47f3-ae67-f6ec543fd405"/><div id="73af7037-6eef-4f95-a99f-602842ba28d7" class="column-list"><div id="eab83d1b-d91a-44c4-86d4-6e102846725b" style="width:12.5%" class="column"><figure id="1a085cd1-0f40-4741-b27d-fdc1967368fe" class="image"><a href="Untitled.png"><img style="width:121px" src="Untitled.png"/></a></figure></div><div id="d1cffd83-d0be-479c-a254-5a8d620c801b" style="width:29.166666666666664%" class="column"><figure id="a590f3a1-f2bf-4fbe-a4bb-0f70ec193d02" class="image"><a href="Untitled%201.png"><img style="width:210px" src="Untitled%201.png"/></a></figure></div><div id="d862239d-f734-4a69-85f4-66fe6d46062a" style="width:58.333333333333336%" class="column"><p id="9acd015f-afbd-49b1-b2f4-2b3936879fa3" class=""><mark class="highlight-gray">This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.</mark></p></div></div></div></article></body></html>

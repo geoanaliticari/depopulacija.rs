@@ -1,0 +1,633 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Gustina putne mreže</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="282c7f11-5d5a-425a-8934-a4006687c393" class="page sans"><header><h1 class="page-title">Gustina putne mreže</h1></header><div class="page-body"><p id="203fd4d5-82d8-4910-8b52-037df5cf2e79" class="">
+</p><div id="7a545cc4-47c0-4784-9d3a-5f62bad26576" class="column-list"><div id="927cf07d-2faf-4618-99a8-02a3b19830fc" style="width:50%" class="column"><figure id="ac44be58-a36a-4319-9f66-e5ff8514c7b8" class="image"><a href="Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393/Road_Net_Dens_Settl_RS.png"><img style="width:2480px" src="Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393/Road_Net_Dens_Settl_RS.png"/></a><figcaption><em>Gustina putne mreže na nivou naselja, 2020</em></figcaption></figure></div><div id="fc65354d-456e-4fb2-8f7c-6e40e1059c0a" style="width:50%" class="column"><figure id="ff0b9daa-c77d-443d-a6ae-b63cc8aecee0" class="image"><a href="Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393/Road_Net_Dens_Mun_RS.png"><img style="width:2480px" src="Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393/Road_Net_Dens_Mun_RS.png"/></a><figcaption><em>Gustina putne mreže na nivou opština, 2020</em></figcaption></figure></div></div><p id="2cd05f80-ec89-48b1-a8d1-7beb5b44ab6f" class="">
+</p><div id="7194171c-f4bd-4e7b-a7dd-3e5c86fa7c54" class="column-list"><div id="4e1546a4-f000-4297-9a7b-3ace7728ab83" style="width:25%" class="column"><figure id="532b186c-4f58-4907-8228-7c7bd9c18aaa" class="image"><a href="Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"><img style="width:100px" src="Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"/></a><figcaption>1. Izaberite opštinu i skrolujte naniže</figcaption></figure><p id="60440e6d-ee23-4af4-983c-18f1eeb66b81" class="">
+</p></div><div id="5dffcc07-9d09-44b4-997b-7c3e0dfce92e" style="width:25%" class="column"><figure id="2ae4c0ab-1037-4622-8e28-ccf1ec1c60f8" class="image"><a href="Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092/Untitled.png"><img style="width:100px" src="Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092/Untitled.png"/></a><figcaption>2. Pretražite <em>bar chart</em></figcaption></figure></div><div id="c0519cb5-a82a-4cb2-aa39-8e7d1bbf515d" style="width:25%" class="column"><figure id="7d9df6b3-20a5-44bd-8dfd-69411e49178c" class="image"><a href="Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"><img style="width:100px" src="Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"/></a><figcaption>3. Izaberite parametar</figcaption></figure></div><div id="702dcbff-7efa-4b34-beb4-de9d5d111901" style="width:25%" class="column"><figure id="07bf9b70-d417-4364-8a02-cddd3dd83130" class="image"><a href="Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947/Untitled.png"><img style="width:100px" src="Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947/Untitled.png"/></a><figcaption>4. Prevucite mišem preko barova da biste videli detalje </figcaption></figure></div></div><figure id="58cb1876-2b19-4978-9beb-d196904fd908"><div class="source"><a href="https://maps.depopulacija.rs/road-network-density/content/index.html?lang=sr">https://maps.depopulacija.rs/road-network-density/content/index.html?lang=sr</a></div></figure><p id="acdcd5f6-1270-432c-8aae-25e40d4e70ed" class="">
+</p><p id="b4e1d268-f21d-44da-885a-2071a0a37944" class="">Indikator <em><strong>Gustina putne mreže</strong></em> ukazuje na opremljenost nekog prostora putnom mrežom. Za njegovo izračunavanje korišten je <a href="https://www.openstreetmap.org/"><mark class="highlight-blue">OpenStreetMap</mark></a>, presek za 2020. godinu na administrativnoj osnovi (<a href="https://geosrbija.rs/usluge/otvoreni-podaci-nigp/"><mark class="highlight-blue">GeoSrbija</mark></a><a href="https://geosrbija.rs/usluge/otvoreni-podaci-nigp/"> </a>[Open data of the National Data Infrastructure, Republic Geodetic Authority, n.d.]). Radi ilustracije odnosa sa populacionom dinamikom, ovaj indikator preklopljen je sa <strong><em>Indeksom promene broja stanovnika 2015/1975</em></strong> (set podataka<mark class="highlight-blue"> </mark><a href="https://data.jrc.ec.europa.eu/dataset/0c6b9751-a71f-4062-830b-43c9f432370f"><mark class="highlight-blue">GHS-POP R2019A - GHS population grid multitemporal</mark></a> [European Commission, Joint Research Center, 2019]) na osnovu čega je moguće ustanoviti na kojim prostorima je saobraćajna opremljenost igrala bitnu ulogu kod populacionih promena. </p><p id="e26b9958-1a65-4eb1-bf56-94cf3eaf54e5" class="">Izdvajaju se saobraćajno najfrekventniji prostori, “žile kucavice”, koje čine dolinski pravci (moravska, nišavska, savska i dunavska dolina, i pravac ibarske magistrale). Pravac koji apsolutno dominira, posebno na teritoriji centralne Srbije, je pravac Koridora 10 sa svojim bočnim krakom 10c (Niš-Bugarska granica). Identifikovana su infrastrukturna čvorišta, predstavljena gradskim naseljima sa značajnom koncentracijom stanovništva i ekonomskih aktivnosti. Na teritoriji Vojvodine je nešto uravnoteženija infrastrukturna opremljenost naselja, gde kao čvorište dominira grad Novi Sad, a izdvajaju se kontinuirani nizovi naselja dobre opremljenosti koji se poklapaju sa pravcem Koridora 10 (Šid-Beograd) i E-75 (Subotica-Beograd). S druge strane, udaljavanjem od čvorišta i glavnih koridora, naročito ka severoistoku, jugozapadu i jugu zemlje, povećava se izolovanost. Čak 40.5% naselja Srbije je nepovoljne saobraćajne opremljenosti. Komparacijom sa populacionom dinamikom, pomenuta područja beleže negativne trendove, te se može izvesti analogija da saobraćajna izolovanost katalizira pad broja stanovnika i izloženost procesu depopulacije.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9bd5323b-a3d3-40ec-ae83-7a56ddeca3b9"><div style="font-size:1.5em"><span class="icon">📝</span></div><div style="width:100%">Nepotpuni prostorni obuhvat u vrednostima indikatora posledica je ograničenja u korišćenim izvorima podataka: nedostatak administrativnih granica za nivo naselja za prostor Kosova i  Matohije i podataka o broju stanovnika za opštine Preševo i Bujanovac.</div></figure><hr id="19186ace-3164-4b98-a459-0c87a20ff068"/><p id="9389d4c6-f6d0-4762-a66a-030b9757edc9" class=""><a href="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a> </p><hr id="566c6946-5555-47b3-8189-390e1e5b3058"/><p id="c8315e3f-5354-4260-aceb-1918ca62f8e4" class="">
+</p><p id="034c6d98-8588-4a7e-b396-e61f21c1fed8" class=""><a href=""><mark class="highlight-blue">Nazad na vrh strane ↑</mark></a></p><hr id="e0db201b-d12d-4c16-a9b7-dd3f10f19e56"/><div id="057f7472-7966-480c-a76b-e19efde1cd5e" class="column-list"><div id="ae36eb99-f5ec-4293-88d7-2b1143b2523e" style="width:12.5%" class="column"><figure id="987f63a8-8601-4736-853e-c101eaf97e33" class="image"><a href="../Untitled.png"><img style="width:121px" src="../Untitled.png"/></a></figure></div><div id="c9ecd8c1-c448-47b7-a6a8-fac6916f933f" style="width:29.166666666666664%" class="column"><figure id="0b261799-a72c-4d0f-a86b-23cf5104e703" class="image"><a href="../Untitled%201.png"><img style="width:210px" src="../Untitled%201.png"/></a></figure></div><div id="86d7cd31-b732-450d-b82d-a3d5dde1fbcd" style="width:58.333333333333336%" class="column"><p id="f0416758-f3ae-48e6-8331-1df3d483c562" class="block-color-gray">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</p></div></div><p id="01bf3bef-9392-495c-90f0-0cab6ab030c9" class="">
+</p></div></article></body></html>

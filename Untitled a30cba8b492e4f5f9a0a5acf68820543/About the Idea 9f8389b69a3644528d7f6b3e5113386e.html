@@ -1,0 +1,632 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>About the Idea</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9f8389b6-9a36-4452-8d7f-6b3e5113386e" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">❓</span></div><h1 class="page-title">About the Idea</h1></header><div class="page-body"><nav id="91cb3a96-2328-4901-b474-a7408b2ee622" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ab891e29-3479-4b00-b31e-dc1e828a7506">The Idea</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bbf454c6-1adc-457c-bf93-739d935314bc">What is the Remote Sensing (Detection)?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b2e49e7-3c1c-45c7-8014-c410dc1a7318">Methodological Framework</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3a96d0f8-e32f-4d66-8cfe-fb8e335aaf53">Traditional vs Alternative Data</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34f75e22-0179-4339-bb34-9a836708f2a3">Highlights</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1bec0930-549e-4660-91c9-c1d706566c71">Who are the Users?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#edaf8534-c4ef-47ee-9eb7-2e0ecfd926aa">Platform Development in the Future</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bfbcbcb7-c011-4808-a138-96e340b5e1e7">About Team</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#68b87a7a-f8f3-4ed4-8010-e2afffdfa642">Contact</a></div></nav><h1 id="ab891e29-3479-4b00-b31e-dc1e828a7506" class="">The Idea</h1><p id="2a956ecd-c562-4c41-b1fa-14eb285c92ff" class="">The project “Remote detection of (de)population processes” was realised as one of the winning solutions to the challenge “Data to better understand the depopulation process” announced by the <mark class="highlight-blue"><a href="https://www.rs.undp.org/content/serbia/en/home.html">United Nations Development Program (UNDP)</a></mark> and the <mark class="highlight-blue"><a href="https://serbia.unfpa.org/en">UN Population Fund (UNFPA)</a></mark> in Serbia. The primary idea of the project is the identification and perception of depopulation at various levels of the territorial organization of the Republic of Serbia using data sets based on remote sensing. Our idea is to develop a permanent infrastructure of different data sets and establishment of a unique “user-friendly” environment for identification, observation, and spatio-temporal detection of the depopulation process in Serbia.</p><p id="2b95a7c2-8e47-4581-8a19-5560c5da249d" class="">The realization is dedicated to the creation of an online service that enables further and more detailed research of depopulation and related processes and phenomena, creating guidelines for development planning purposes, but also general information of the population issue in Serbia. A set of 12 indicators with an interactive cartographic interface is available for the users. There is a possibility of choosing the spatial and temporal components to get essential information about the condition and changes in population processes in Serbia. Additionally, for the advanced users, provided indicators are available for download including information about data sources, methodological framework, and technical guidelines useful for further research.</p><h1 id="bbf454c6-1adc-457c-bf93-739d935314bc" class="">What is the Remote Sensing (Detection)?</h1><p id="85c6a52b-eb7d-4904-bec4-f7cbcac00a82" class="">Remote sensing (detection) includes a set of methods that enable the collection of information without direct, physical contact with the observed phenomenon or object (satellite, aerial imagery, etc.), by measuring reflected and emitted radiation, and further processing and analysis of such information. Geospatial data generated by remote sensing methods have a wide range of applications in various fields. In terms of phenomena and processes related to the population are: data on the spatial distribution of the population, built-up area, morphometric features of the terrain, infrastructural elements, population, and economic activity measured by the emitted light from the Earth&#x27;s surface, etc. Such data are characterised by a high level of spatial and temporal detail, opening up new possibilities for quantitative and qualitative analysis.</p><h1 id="7b2e49e7-3c1c-45c7-8014-c410dc1a7318" class="">Methodological Framework</h1><p id="7b1779f4-237c-4463-a425-66203e7442f2" class="">The application of remote sensing data in the study of (de)population processes enables to overcome the limitations and supplement traditional data sources (e.g. Census). The advantages, as spatially and temporally “sensitive” data, are the possibilities of continuous monitoring of population changes. Using satellite images and other remote sensing data, it is possible to monitor population dynamics with a spatial resolution of several hundred meters (e.g. fields of 250 x 250 m) at the level of settlements and municipalities. For this purpose, a set of 12 indicators has been created that directly or indirectly indicate the depopulation process, by using one or overlapping several different data types to enable the identification, visualisation, and interpretation of (de)population changes.</p><p id="3111d8e6-ffb8-4676-bf7a-59b5749229c3" class="">Some of the proposed indicators are well known in science, and they are used to observe and perceive population changes (Population Change Index, Population Density) as well as its spatial manifestations. Others are non-typical and and presented on this platform in order to detect the causes of depopulation and spatial transformation under the population changes (nighttime lights, seasonal settling, distribution of the population by hypsometric zones, accessibility, land cover changes, etc.). To facilitate the overview and understanding of provided indicators, they are classified into four groups:</p><ul id="a97a9f28-d269-43fe-9090-89b639ba1674" class="bulleted-list"><li><strong>Demographic indicators</strong> are based on the long-term population data as the exact numerical values enabling identification and monitoring of (de)population changes. The novelty comes from the gridded data sets showing the population count on “finer” spatial resolution. These indicators are the basis for depopulation studies, and they were combined with other data to create more complex indicators. Two indicators belong to this group: Population Age Structure by Altitude Zones, 2011 and Population Change Index, 2015/1975.</li></ul><ul id="f4cd6bf1-9f6a-422e-8a40-f5a8215d89f8" class="bulleted-list"><li>The group of <strong>(urban)morphological indicators</strong> basically contains population data, while the focus is directly on the spatial distribution. To determine the demographic potential of a certain area and define a problem solution, it is relevant to have data about the spatial distribution of the population and spatial inequalities, as well as how it is distributed on the existing built-up area. The built-up features directly indicate population activities in some areas, whether they are temporary or permanent. In particular, the curiosity in this group is an indicator that enables identification of temporarily or permanently abandoned objects directly indicating the depopulation process in Serbia. Three indicators belong to this group: Population Density in Serbia, 2015, Lot Coverage Change Index, 2014/1975, and Real Abandoned’ and Temporarily Used Built-Up Areas, 2015.</li></ul><ul id="588701b0-64de-46ed-8d12-e93c1ced4b0a" class="bulleted-list"><li>The group of <strong>(geo)spatial indicators </strong>contains the largest number of created indicators, including those that express spatial changes and directly or indirectly affects the population processes. One of them is altitudinal zonality, whose influence is placed in relation to the age structure, distribution of settlements, and population. This indicator is important because it enables the examination of the long-established thesis that &quot;higher, mountainous areas are demographically older and demographically endangered&quot;, but in this case based on the high resolution data. The innovation is the application of nighttime lights, in terms of lighted area and sum of lights, to perceive the process of depopulation and the seasonal character of settlements, as well as monitoring the population and economic activity. The horizontal perspective of the spatial component is given through the development of road networks as one of the factors that affect demographic potential and provide a basis for studying spatial &quot;isolation&quot;. our indicators belong to this group: Hypsometric Structure (Altitudinal Zonality) of Municipalities and Settlements, ‘Spatial Lighting’, Seasonal Character of Settlements, and Road Network Density.</li></ul><ul id="a305d4c2-e9e2-4f91-8bb1-ef950c0825a2" class="bulleted-list"><li>The group of <strong>composite indicators</strong> was singled out because it is based on a combination of different types of data, showing spatial, morphological, and population changes. To illustrate possibilities for their applications, population density (grid-based) was overlapped with hypsometric zones, population changes with accessibility to municipal centers and land cover with the emphasis on land conversion to natural ecosystems as an indicator of reduced population and/or economic activity. Such indicators are non-typical in the research of population changes and represent a contribution to scientific methodology in Serbia. Three indicators belong to this group: Altitudinal Conditionality of the Population Density’ Changes, Accessibility as a Determinant of Depopulation, and Land Cover as a ‘Tool for Monitoring’ Population Change.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9ed16f28-7e29-4156-a086-e0a093826356"><div style="font-size:1.5em"><span class="icon">🔗</span></div><div style="width:100%">A list of indicators can be seen <mark class="highlight-blue"><a href="Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6.html">here</a></mark>.
+Technical documentation with a methodological framework for indicators (file Meta) is available <mark class="highlight-blue"><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html">here</a></mark>.
+Download indicators as GeoTIFF, Shapefile, and/or TXT file <mark class="highlight-blue"><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html">here</a></mark>.</div></figure><h1 id="3a96d0f8-e32f-4d66-8cfe-fb8e335aaf53" class="">Traditional vs Alternative Data</h1><p id="4bf3ecdf-f39f-41a9-afeb-e87aecfbf7df" class="">Demographic processes in Serbia have traditionally been expressed through quantitative changes registered in the inter-census period. Such an approach lacked the possibility of observing at the higher resolution level, precise identification of spatial phenomena and changes, crossing with other types of data that would indicate the structure of the process and indicate its dynamics. On the other hand, the introduction of alternative data sources minimizes the generalisation, enables observation at the micro-level (lower than statistical and administrative spatial units), and provides insight into microdata that can be added as an attribute to the noticed phenomenon and process. In this sense, the advantage of the data sets presented here, characterized as an alternative, is reflected.</p><h1 id="34f75e22-0179-4339-bb34-9a836708f2a3" class="">Highlights</h1><ul id="830ed52e-ab45-4b97-9aa3-0914f3380882" class="bulleted-list"><li>The Project “Remote Detection of (De)Population Processes in Serbia” included a set of 12 indicators;</li></ul><ul id="ca9710f2-9795-4061-95c3-af2b17d1fdbc" class="bulleted-list"><li>Selected indicators can be classified as typical, traditionally used in the study of (de)population processes, and atypical, modern, based on an innovative or modified approach to the study of population issues;</li></ul><ul id="9d7d35e9-353c-4491-9dcc-93fe00c01947" class="bulleted-list"><li>The used indicators are based on alternative data sources;</li></ul><ul id="52124b1c-9956-4a82-81ae-93d672627693" class="bulleted-list"><li>The proposed alternative data are characterized by “finer” spatio-temporal resolution enabling a wider perspective of depopulation, its spatial manifestations, recognition of driving factors, as well as consequences of population decrease in some areas;</li></ul><ul id="3110271d-0f12-40a1-b44e-e7630571fa50" class="bulleted-list"><li>The set of population data, used for indicators calculation, which are based on the spatial inhabitants distribution, is expressed through the number of inhabitants per grid cell, as a more precise and accurate data for the depopulation process observing;</li></ul><ul id="9bbe14c5-daae-4ffa-a737-718103ab0d17" class="bulleted-list"><li>Application of the satellite images of nighttime lights, as an innovative approach, gave impressive results during detection of the population and activities spatial dispersion , as well as their trends in a certain period of time or seasonal changes;</li></ul><ul id="717a314e-1855-457a-bb16-a9b6d0181e72" class="bulleted-list"><li>Demographic indicators enable the perception of temporal and structural component of the depopulation. They have pointed out that 1) with the increase in altitude, the share of the elderly reciprocal increases, which is especially emphasized in hilly and mountainous areas, while in the lower areas this causal relationship is less pronounced; 2) population changes in Serbia 1975-2015, emphasized a decrease in the inhabitants number, especially prominent in the peripheral zones of South Serbia, both in the mountainous area, as well as in smaller urban areas, which are gradually losing their vitality, while the population increase is characteristic mostly for urban areas;</li></ul><ul id="2631b2e0-af0c-4bb3-909a-11ed821ec1cc" class="bulleted-list"><li>(Urbo)morphological indicators have been used for observation of some of the consequences of the depopulation process, which could serve for the depopulation zones delimitation. According to these indicators, it have been emphasized that: (1) low population density is typical for peripheral parts of Serbia, which are exposed to continuous and intense negative demographic trends, while highly urban areas and frequent traffic routes have been identified as zones of population concentration over a long period of time; (2) the lowest population concentration per built-up area is dominantly identified in East and Southwest Serbia, which appear as hotspots, on the contrary, the highest values of the indicator are associated with urban and suburban areas. Low population concentration is characterized by slight presence of built-up area, and the spatial transformation is &quot;absent&quot;; (3) the zones that are potentially the most affected by abandoning of the facilities are: (a) traditionally depopulated municipalities; (b) municipalities in East Serbia and Pomoravlje area with a large number of residents that are temporarily or permanently staying abroad; (c) municipalities in border areas; (d) municipalities in mountainous areas, and (e) some municipalities in Kosovo and Metohija;</li></ul><ul id="e24690b1-2d77-456c-9b2c-bf0a9b1d3dd8" class="bulleted-list"><li>(Geo)spatial indicators served for analysis of the depopulation spatial component. Based on these indicators it was determined: (1) the altitude of 800 m a.s.l. is the upper threshold for settlement distribution, above that altitude limit, settlements are more demographically endangered; (2) areas with depopulation features are characterized by the lowest light intensity; (3) seasonal migrations, temporary settling and occasional use of residential and economic facilities are particularly observed in tourist and weekend settlements in the winter–summer season, as well as in areas of intensive agricultural; (4) with increasing altitude the number of high-density settlements decreases, 21.3% of the settlements belong to the plains (up to 200m. a.s.l.), while 26.5% are distinctly mountainous, while their number above 1500 m a.s.l. is significantly reduced (parts of 115 settlements);</li></ul><ul id="f9610ec8-28e7-4175-9959-d57b133bb443" class="bulleted-list"><li>Composite indicators, which simultaneously treat multiple components of the depopulation process, pointed out: (1) approximately 40.5% of settlements in Serbia have unfavourable traffic infrastructure, which contributes to their isolation and exposure to depopulation; (2) due to poor accessibility and demographic trends, the most unfavourable features are observed in the border areas of the country, as well as in the peripheral parts of municipalities, which indicates that population shrinkage is more intensive moving away from the centre. This occurs in one-third of all settlements in Serbia (32.1%), usually in mountainous areas; (3) conversions of cultivated land towards transitional categories of mixed, grassland and forest directly indicate a reduced activity or absence of population.</li></ul><h1 id="1bec0930-549e-4660-91c9-c1d706566c71" class="">Who are the Users?</h1><p id="2269c319-2538-4aa0-a506-869a45877270" class="">The content of the platform serves all interested individuals and groups, as well as the professional and scholarly community for developing further research, creating development planning documents, and establishing development policies from the local to the national level. The high level of &quot;spatial detail&quot; in the population distribution, i.e. the degree of depopulation/urbanization is very important to establish an effective and integrated planning system framework and control.</p><h1 id="edaf8534-c4ef-47ee-9eb7-2e0ecfd926aa" class="">Platform Development in the Future</h1><p id="def76bd9-963c-47bc-b5d2-9ec28f5da7b6" class="">Available data sets enable further analysis, mathematical-statistical modeling, and upgrade to new data sources. The high spatial resolution layers resulting from the project can serve as input data for all models, where one of the variables is the spatial distribution of the population, the dynamics of population change, but as well as the transformation in built-up area and land use due to population changes. The platform is an open data concept. In the future, the platform will support the introduction of new sets of multidisciplinary data with the aim of a more detailed, clearer, and more diverse view of the processes taking place in Serbia. Integrating the new results represents a key task for the future.</p><p id="6ace74d3-3dc0-4a05-a3e1-bcba448dcac3" class="">The existence and improvement of the platform during the forthcoming period offers continuous monitoring of depopulation processes on the territory of the Republic of Serbia. The possibility of studying demographic processes and phenomena at the micro-level and using micro-data offers a more precise perception of phenomena, the possibility of discovering the causes, and understanding the consequences.</p><h1 id="bfbcbcb7-c011-4808-a138-96e340b5e1e7" class="">About Team</h1><p id="8b3c932d-d157-446e-8f45-9cf42ddd47e4" class="">The multidisciplinary team “Geoanalysts” consists of six members: </p><ul id="c677ba58-62cb-485a-8687-adfc8129d558" class="bulleted-list"><li>geographer Gorica Stanojević,</li></ul><ul id="bc541554-2460-4aeb-a69b-bdfd2ff150db" class="bulleted-list"><li>demographer Vlasta Kokotović Kanazir,</li></ul><ul id="92ad842c-ebeb-4086-9dd3-4280610ebe5a" class="bulleted-list"><li>spatial planners Marija Drobnjaković, Milena Panić and Dejan Doljak </li></ul><ul id="2f4a81f3-2d21-4d2e-9807-907284585bc5" class="bulleted-list"><li>web developer Nikola Petković. </li></ul><p id="bd8a02f6-d8b1-492b-b23f-6ea1c14e044d" class="">Team members are gathered around an idea that aims to form an open data set (depopulation areas, population density, distance from major functional centers, accessibility, morphological elements of settlements, etc.). This will allow identification, visualization, and interpretation of changes with the possibility to download them for further analysis and processing through this website.</p><p id="fa5c9069-e692-4274-a761-ffa9e1c603f6" class="">
+</p><p id="77d51ce7-f189-43e0-9455-c07938d5f7e8" class=""><mark class="highlight-blue"><a href="">Back to top ↑</a></mark></p><hr id="d7a8343f-c762-413c-b3e7-68af34dcb512"/><h1 id="68b87a7a-f8f3-4ed4-8010-e2afffdfa642" class="">Contact</h1><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="fc96affe-40ba-4876-b31e-30b5f15e25be"><div style="font-size:1.5em"><span class="icon">✋</span></div><div style="width:100%"><em>We won&#x27;t send spam — ever. </em></div></figure><figure id="e778ac06-f878-4e42-8695-f5d53b900fc0"><div class="source"><a href="https://chilipepper.io/form/medium-diced-birdeye-4213cfc5-550e-47c1-b6a9-49f908b0107f">https://chilipepper.io/form/medium-diced-birdeye-4213cfc5-550e-47c1-b6a9-49f908b0107f</a></div></figure><hr id="d526bc1a-6a41-4016-bc37-9ad8e5726147"/><div id="4c78393e-90aa-4def-8a3e-d9cc9957a4bd" class="column-list"><div id="4d8f6221-0787-4378-a346-31c0303a068c" style="width:4.166666666666666%" class="column"><figure id="5d3cfea0-cd2e-42e9-95ce-ae20df0daa22" class="image"><a href="Untitled.png"><img style="width:121px" src="Untitled.png"/></a></figure></div><div id="ce76540d-fe9a-407e-a529-dc933b56b07b" style="width:8.333333333333332%" class="column"><figure id="98e27d60-e6d0-4823-9d26-6490da79aaff" class="image"><a href="Untitled%201.png"><img style="width:210px" src="Untitled%201.png"/></a></figure></div><div id="b94218e2-96e8-4619-b646-ffe2cc260a0c" style="width:87.5%" class="column"><p id="98cb54f9-a3e8-4402-945a-11542482ef92" class="block-color-gray"><mark class="highlight-gray"><em>This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.&quot;</em></mark></p><p id="da7678e0-3fa7-4cd0-935c-4842564bf21d" class="">
+</p></div></div><p id="bee77bfa-e60c-4d67-bfbb-46f7d4c28450" class="">
+</p></div></article></body></html>

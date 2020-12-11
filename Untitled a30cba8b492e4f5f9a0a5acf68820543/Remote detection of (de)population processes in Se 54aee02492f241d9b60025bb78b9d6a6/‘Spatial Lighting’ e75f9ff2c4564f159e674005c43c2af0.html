@@ -1,0 +1,631 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>‘Spatial Lighting’</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e75f9ff2-c456-4f15-9e67-4005c43c2af0" class="page sans"><header><h1 class="page-title"><mark class="highlight-gray">‘Spatial Lighting’</mark></h1></header><div class="page-body"><p id="16045229-cb09-450e-af22-e9c41a1262ff" class="">
+</p><div id="03f9dafb-47a2-4045-832f-15bdd4d2ae53" class="column-list"><div id="b40ba2b5-fbce-4712-a638-157af49d0b61" style="width:33.333333333333336%" class="column"><figure id="67a0f3f9-12c8-4484-82bd-8531bb4e8bdf" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"/></a><figcaption>1. Choose a parameter</figcaption></figure></div><div id="4c49e98a-53ca-4bf9-9507-386413b6887f" style="width:33.333333333333336%" class="column"><figure id="0ed19282-696f-4fc0-a6b8-2119460c0da6" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"/></a><figcaption>2. Choose a municipality and scroll down</figcaption></figure></div><div id="87b821a9-4609-45dd-9933-7bdeaf7fc139" style="width:33.33333333333333%" class="column"><figure id="0fb034c0-5120-40e0-af4d-a300f25b57cf" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092/Untitled.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092/Untitled.png"/></a><figcaption>3. Explore bar chart</figcaption></figure></div></div><figure id="0b56c931-deb0-4619-a98f-e901f0479b85"><div class="source"><a href="https://maps.depopulacija.rs/spatial-lighting/content/index.html">https://maps.depopulacija.rs/spatial-lighting/content/index.html</a></div></figure><p id="d81cd977-6669-476d-ad4b-4e25a09d6894" class="">The satellite images of nightlights are an indirect tool for tracking population changes and trends. They indicate where development is concentrated, i.e. where the population and activities are located. An analysis of nightlights over a long period of time reveals various spatial processes. Where the intensity of lighting or radiance is weak, areas are gradually “extinct” – the “captured” activity and population are declining. For this purpose, two variants of the indicator have been defined and the following data were used to calculate them: <mark class="highlight-blue"><a href="https://eogdata.mines.edu/download_dnb_composites.html">Version 1 VIIRS Day/Night Band Nighttime Lights</a></mark><mark class="highlight-blue"> </mark>[Earth Observation Group (EOG); Colorado Mining School] and administrative division (<mark class="highlight-blue"><a href="https://geosrbija.rs/usluge/otvoreni-podaci-nigp/">GeoSrbija</a></mark><mark class="highlight-blue"> </mark>[National Data Infrastructure, Republic Geodetic Authority]). The data about mean annual radiance for 2015 and mean annual radiance in period 2015–2019 were used in analysis. In the first case, data set for 2015, a background (non-lights) was sets to zero. In the second case, dataset for 2015–2019, a treshold of 1 nW cm<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">^-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> sr<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">^-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">^1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> is assumed for no lights or low population activity.</p><p id="62ee1546-fbd5-4d41-a140-0e02b9ab3b81" class="">1. The <em><strong>Sum of Lights</strong></em> (SOL)indicates the total intensity of activity in an area. Tracked over a longer period of time, it indicates the directions of development expansion, as well as the gradual “extinction” of some areas. This indicator was used to assess the development level of municipalities in Serbia. The total radiance in the territory of Serbia, observed at the settlement level, reveals a clear division of the country into a “developed North” and an “undeveloped South”. The strongest light intensity was registered in the Belgrade and Novi Sad region, the Danube valley, Posavina and Pomoravlje. To the south of the Peri-Pannonian realm, the level of lighting drops drastically. The least intensive activity was observed in the peripheral southern and southwestern parts of Serbia, mostly marked by traditionally underdeveloped areas, which is reciprocal to the population dynamics in these areas. Observed over a five-year period (2015–2019), a division between development poles and less developed and depressed areas has been established, with a tendency to mitigate differences by “strengthening” some regional centres and their immediate surroundings.</p><p id="ff30bd94-29a1-4deb-9af6-24a476c619de" class="">2. The share of  <em><strong>Lighted areas</strong></em> (LA) in total area of settlements/municipalities in Serbia indicates the intensity of population dynamics in an area. Zones of increased population concentration have been identified, as well as zones of depopulation. According to the data for 2015, an increased population concentration is limited to the Belgrade and Novi Sad region, the Danube valley, Posavina and Pomoravlje. On the other hand, the settlements with a small share of lighted areas are the most widespread in the peripheral parts of the country: in southwestern parts of Serbia, in the contact zone with Kosovo and Metohija, Stara Planina Mt., the border zone of southeast Serbia, the Homolje region and Braničevo in East Serbia and Valjevo mountains in West Serbia. A data analysis for 2015–2019 shows a clear population polarisation in the territory of Serbia in favour of the urban poles of the Pomoravlje, Belgrade and Novi Sad regions. The zone of “shrinking” settlements, i.e. those with the lowest intensity of radiance, was rapidly expanding over a five-year period, narrowing and highlighting the zone of increased radiance intensity. In the peripheral parts of Serbia, population activity is decreasing, and the areas are gaining depopulation traits.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5137dcc9-5091-4eec-8a0c-3d4862c4431b"><div style="font-size:1.5em"><span class="icon">📝</span></div><div style="width:100%"><mark class="highlight-gray">Incomplete spatial coverage of the indicator values is a consequence of limitations in the used data sources: lack of administrative boundaries of settlements for the territory of Kosovo and Metohija. For the municipal level, the entire research area is covered.</mark></div></figure><hr id="25cdf724-9ead-4591-939f-425e102b8e17"/><p id="17dfcf23-e840-4a1a-8862-5f85107f1e1a" class=""><a href="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a> </p><hr id="b037eaa4-ce07-482b-8549-98fe2eae0556"/><p id="6ae4c1ea-d936-4cbe-9738-1b96a0e9c966" class="">
+</p><p id="90f75689-cd3f-4600-b208-512b697ed68b" class=""><a href=""><mark class="highlight-blue">Back to top ↑</mark></a></p><hr id="a1b73f1e-5a67-40ff-a7dd-006a20ef61e5"/><div id="91a95724-a5e2-4b4c-81a6-595855e18b26" class="column-list"><div id="527b27c6-c429-4dd3-91bd-5b551df38091" style="width:12.5%" class="column"><figure id="831fb896-62e3-4f1c-8a53-b5940de05bec" class="image"><a href="../Untitled.png"><img style="width:121px" src="../Untitled.png"/></a></figure></div><div id="9861d927-0cb5-4e17-94fd-60a7b8cf7819" style="width:29.166666666666664%" class="column"><figure id="c0b69046-5d0e-4eb0-81c8-2b2f68688e9c" class="image"><a href="../Untitled%201.png"><img style="width:210px" src="../Untitled%201.png"/></a></figure></div><div id="6cff6109-d804-410f-b15f-2af876498b5e" style="width:58.333333333333336%" class="column"><p id="b9cc8a83-a1be-4e3b-9973-0f0bb3521634" class=""><mark class="highlight-gray">This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.</mark></p><p id="76e212a4-8948-4d21-a594-8240c52b0910" class="">
+</p></div></div><p id="2aeb7b04-0b07-4b79-a7a7-c1b494a7cec3" class="">
+</p></div></article></body></html>

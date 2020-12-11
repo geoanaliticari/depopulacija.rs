@@ -1,0 +1,630 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Namena zemljišta u funkciji populacionih promena</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fd952117-338b-493a-9b84-3042fa68b848" class="page sans"><header><h1 class="page-title">Namena zemljišta u funkciji populacionih promena</h1></header><div class="page-body"><p id="eaf3c3f5-588b-4325-8073-1d12e2bbeef3" class="">
+</p><div id="f443bf9e-4913-4cf0-a3e2-40b3c6abd383" class="collection-content"><h4 class="collection-title">Mape</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th></tr></thead><tbody><tr id="61133dcc-2c0d-4cb9-b665-761d8f107759"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Promene%20sloz%CC%8Cenih%20obrazaca%20obrade%20(CLC%202%204%202)%20(199%2061133dcc2c0d4cb9b665761d8f107759.html">Promene složenih obrazaca obrade (CLC 2.4.2) (1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="0092695f-e1fa-4441-a1f5-165f877619f6"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Pretez%CC%8Cno%20poljoprivredno%20zemljis%CC%8Cte%20sa%20znac%CC%8Cajnim%20%200092695fe1fa4441a1f5165f877619f6.html">Pretežno poljoprivredno zemljište sa značajnim površinama prirodne vegetacije (CLC 2.4.3)(1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="7f9c6d84-f0a5-4db7-bf99-8c1b8ada4ded"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Promene%20pas%CC%8Cnjaka%20(CLC%202%203%201)(1990%E2%80%932018)%20i%20populac%207f9c6d84f0a54db7bf998c1b8ada4ded.html">Promene pašnjaka (CLC 2.3.1)(1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="40d1823c-8473-4e8c-9db4-e05aa60c6604"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Promene%20prirodnih%20travnjaka%20(CLC%203%202%201)(1990%E2%80%932018)%2040d1823c84734e8c9db4e05aa60c6604.html">Promene prirodnih travnjaka (CLC 3.2.1)(1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="64edd890-4a07-4c0a-be07-0d6301aabe7f"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Promene%20prelazno%20s%CC%8Cumovito-z%CC%8Cbunastih%20predela%20(CLC%2064edd8904a074c0abe070d6301aabe7f.html">Promene prelazno šumovito-žbunastih predela (CLC 3.2.4)(1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="992f1b82-44f5-4ffa-8867-cda2256af373"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Promene%20s%CC%8Cumskog%20pokrivac%CC%8Ca%20(CLC%203%201)(1990%E2%80%932018)%20i%20992f1b8244f54ffa8867cda2256af373.html">Promene šumskog pokrivača (CLC 3.1)(1990–2018) i populaciona dinamika (1990–2015)</a></td></tr><tr id="d57532b4-adf0-46c5-a15c-bb18d703261d"><td class="cell-title"><a href="Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848/Mape%20f443bf9e49134cf0a3e240b3c6abd383/Untitled%20d57532b4adf046c5a15cbb18d703261d.html">Untitled</a></td></tr></tbody></table></div><p id="180b053e-ee0e-43f1-976f-0de8aa42fad0" class="">
+</p><p id="ff7778b3-22e1-40f0-90c9-263e321bd3eb" class="">Indikator <em><strong>Namena zemljišta u funkciji populacionih promena</strong></em> ukazuje na transformacije kultivisanog zemljišta ka tranzicionim kategorijama travnatog i šumskog ekosistema u periodu 1990–2018, što se direktno dovodi u vezu sa slabom populacionom aktivnošću ili njenim potpunim odsustvom u periodu 1990–2015. Za njegovo izvođenje korišćeni su setovi podataka <mark class="highlight-blue"><a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc-1990">Corine Land Cover (CLC) 1990, Version 2020_20u1</a></mark> [European Environmental Agency, Copernicus Land Monitoring Service, 2020],<mark class="highlight-blue"> </mark><mark class="highlight-blue"><a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018">Corine Land Cover (CLC) 2018, Version 2020_20u1</a></mark> [European Environmental Agency, Copernicus Land Monitoring Service, 2020],<mark class="highlight-blue"> </mark><mark class="highlight-blue"><a href="https://data.jrc.ec.europa.eu/dataset/0c6b9751-a71f-4062-830b-43c9f432370f">GHS-POP R2019A - GHS population grid multitemporal</a></mark> [European Commission, Joint Research Center, 2019], i <mark class="highlight-blue"><a href="https://geosrbija.rs/usluge/otvoreni-podaci-nigp/">GeoSrbija</a></mark> [Open data of the National Data Infrastructure, Republic Geodetic Authority, n.d.].</p><p id="f9623976-f5da-4877-9b28-55600b9551ca" class="">Konverzija obradivog zemljišta, kao prostora na kojem je vidljiva ljudska aktivnost, odvija se postupno kroz nekoliko faza. Prva faza iskazana je kroz transformaciju poljoprivrednog zemljišta ka površinama sa mešovitom namenom i učešća prirodne vegetacije, sa tendencijom ekstenzifikacije proizvodnje. Ovakve površine koriste se najčešće za zadovoljavanje esencijalnih potreba lokalnog stanovništva. Najintenzivnije smanjenje ove kategorije mešovite namene zemljišta zabeležene su u severnoj pokrajini, Pomoravlju, Timočkoj krajini i Peripanonskom pojasu, koji su visoko intenzivni poljoprivredni regioni. Delove pomenutih zona istovremeno karakteriše populacioni porast. S druge strane, jugozapadni, zapadni delovi, kao i delovi Južne i Istočne Srbije odlikuju se značajnim povećanjem površina mešovite kultivacije, što se objašnjava: (1) diverzifikacijom aktivnosti, naročito na industrijskom području (Majdanpek, Užice, Krupanj, Prokuplje, Kladovo i dr.), gde poljoprivreda predstavlja dopunsku delatnost; (2) specijalizacijom u proizvodnji plasteničkog tipa ili voćarstvu u periurbanom pojasu većih centara; (3) proizvodnjom svaštarskog tipa i postepenim napuštanjem poljoprivrede u planinskom delu centralne Srbije, što ukazuje na umanjenu aktivnost stanovništva.</p><p id="b12a5f43-39de-4b7e-93f9-256cb148f39b" class="">Posmatrajući travnate površine na teritoriji Srbije, najintenzivnije registrovane promene ogledaju se u planinskom i pograničnom području Istočne Srbije, Banatu i na visoravnima jugozapadne Srbije. Na pomenutim prostorima, konverzija se odvija u pravcu smanjenja površina pod pašnjacima i povećanja udela kultivisanih travnatih površina. To indirektno ukazuje na pojačanu poljoprivrednu aktivnost stanovnika. </p><p id="36fb54f7-4a46-40d2-89dd-04d23ad792a3" class="">Poslednja faza transformacije obeležena je većom zastupljenošću kategorija prelaznog šumskog rastinja i šumskih površina. Ona indirektno ilustruje napuštanje prostora, odnosno umanjen intenzitet aktivnosti i odsustvo populacije. Za veći deo teritorije Srbije karakteristične su slabe promene u ovim kategorijama. Najintenzivnije promene registrovane su na prostoru Istočne Srbije i Vojvodine. U planinskom pojasu Istočne (posebno na području Homoljskih planina), Jugozapadne i Jugoistočne Srbije promene su se odvijale u korist šumskog zemljišta, s obzirom da ovaj prostor karakteriše slaba ekonomska aktivnost i negativni demografski trendovi. U centralnom delu Srbije, uočava se značajno povećanje šumskih površina, što se može objasniti planskim pošumljavanjem i saniranjem goleti (Kopaonik, Stolovi, Goč).</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="992283df-9843-497a-9b50-18b029ea779f"><div style="font-size:1.5em"><span class="icon">📝</span></div><div style="width:100%">Nepotpuni prostorni obuhvat u vrednostima indikatora posledica je ograničenja u korišćenim izvorima podataka: nedostatak administrativnih granica za nivo naselja i nedostatak tipova korišćenja zemljišta 1990. godine za prostor Kosova i Metohije, kao i podataka o broju stanovnika za opštine Preševo i Bujanovac.</div></figure><hr id="7af096d5-5a7b-42ab-81bd-84060f63dde2"/><p id="17a61cd5-0c8a-4543-abda-c7ff8ee9a69a" class=""><a href="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a> </p><hr id="5663a353-2ed8-4c1b-bc4a-0366a7ee0b56"/><p id="e7a1cfaf-4006-448e-be30-c9ffa14e70b9" class="">
+</p><p id="c805c9ca-6dd5-46c0-95a7-fb9ad4ab4731" class=""><a href=""><mark class="highlight-blue">Nazad na vrh strane ↑</mark></a></p><hr id="5b397839-88af-477b-a250-4470344a976a"/><div id="a9408a37-4335-4c9e-a2c4-2506e0ae2c73" class="column-list"><div id="c27c10df-2d0f-4c0f-9dfc-7d39f18aca2c" style="width:12.5%" class="column"><figure id="3f9e7fe8-d309-43dc-a9a2-b8142903d0d1" class="image"><a href="../Untitled.png"><img style="width:121px" src="../Untitled.png"/></a></figure></div><div id="5c0980b7-3c6d-4fb8-91a2-1bc9617ca290" style="width:29.166666666666664%" class="column"><figure id="25355323-4039-4547-bab5-0be7f321eec6" class="image"><a href="../Untitled%201.png"><img style="width:210px" src="../Untitled%201.png"/></a></figure></div><div id="b86fa95a-69ed-442c-94f9-8432df423b5f" style="width:58.333333333333336%" class="column"><p id="3e5923f1-1130-44d1-8972-6ba4ea79ace5" class="block-color-gray">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</p></div></div></div></article></body></html>

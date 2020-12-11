@@ -1,0 +1,702 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Preuzimanje podataka / Download data</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="09f5513e-55dd-4ab3-8e73-63c69ad4214c" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/></div><h1 class="page-title">Preuzimanje podataka / Download data</h1></header><div class="page-body"><ul id="05c147f6-be36-4e3c-a235-00a79a57fb20" class="toggle"><li><details open=""><summary><strong>Starosna struktura stanovništva prema visinskim zonama, 2011 / </strong><strong><em>Population Age Structure by Altitude Zones, 2011</em></strong></summary><ul id="031a1418-787d-4c5c-93f0-edb544bc1273" class="bulleted-list"><li>Meta:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_1/INDICATOR%201%20Population%20Age%20Structure%20by%20Altitude%20Zones%2C%202011.pdf">INDICATOR 1 Population Age Structure by Altitude Zones, 2011.pdf</a></li></ul><ul id="37c530e2-6c8b-4e2c-a61b-649ec935a9af" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_1/Pop_Age_Str_Alt_Zones_2011.zip">Pop_Age_Str_Alt_Zones_2011.zip</a></li></ul><ul id="2e95ccec-6a7f-461d-adf2-f76ed2fb4b32" class="bulleted-list"><li>TXT:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_1/TXT/Pop_Age_Str_Alt_Zones_2011.txt">Pop_Age_Str_Alt_Zones_2011.txt</a></li></ul><ul id="53437600-db97-4f08-a85c-cd95674a3b03" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_1/Style/Style_Pop_Age_Str_Alt_Zones_2011_S65+.qml">Style_Pop_Age_Str_Alt_Zones_2011_S65+.qml</a>
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_1/Style/Style_Pop_Age_Str_Alt_Zones_2011_TDR.qml">Style_Pop_Age_Str_Alt_Zones_2011_TDR.qml</a></li></ul></details></li></ul><ul id="c60b1a2e-113f-463b-a1ff-4427d4c24916" class="toggle"><li><details open=""><summary><strong>Indeks promene broja stanovnika, 2015/1975 / </strong><em><strong>Population Change Index, 2015/1975</strong></em></summary><ul id="da6929d9-7075-4a43-a34e-82c3d59c5527" class="bulleted-list"><li>Meta:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_2/INDICATOR%202%20Population%20Change%20Index%2C%201975%E2%80%932015.pdf">INDICATOR 2 Population Change Index, 1975–2015.pdf</a></li></ul><ul id="1347770a-538e-4779-bfc4-d5d01c1561be" class="bulleted-list"><li>GeoTIFF:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_2/Pop_Chg_Ind_1975-2015.tif">Pop_Chg_Ind_1975-2015.tif</a></li></ul><ul id="2a15b537-0f3b-406b-b34f-4c234d10c48d" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_2/Style_Traffic_Net_Dens_Pop_Chg_1975-2015.qml">Style_Traffic_Net_Dens_Pop_Chg_1975-2015.qml</a></li></ul></details></li></ul><ul id="3f12515b-e1e2-444a-813a-cbbb9d692333" class="toggle"><li><details open=""><summary><strong>Gustina naseljenosti u Srbiji, 2015 / </strong><em><strong>Population Density in Serbia, 2015</strong></em></summary><ul id="6d196443-0750-4751-9e44-4b195e00af10" class="bulleted-list"><li>Meta:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_3/INDICATOR%203%20Population%20Density%20in%20Serbia%2C%202015.pdf">INDICATOR 3 Population Density in Serbia, 2015.pdf</a></li></ul><ul id="3c62565e-e6a2-480d-bb7b-88d55f97b7ef" class="bulleted-list"><li>GeoTIFF:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_3/GeoTiff/Pop_Dens_RS_2015.tif">Pop_Dens_RS_2015.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_3/GeoTiff/Pop_Dens_Built-Up_RS_2015.tif">Pop_Dens_Built-Up_RS_2015.tif</a></li></ul><ul id="b1ff795c-69d3-43e1-9a89-7544b5ed330c" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_3/Style/Style_Pop_Dens_RS_2015.qml">Style_Pop_Dens_RS_2015.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_3/Style/Style_Pop_Dens_Built-Up_RS_2015.qml">Style_Pop_Dens_Built-Up_RS_2015.qml</a></li></ul></details></li></ul><ul id="27ef7332-350b-4c74-b87b-9356ef2fbf4b" class="toggle"><li><details open=""><summary><strong>Indeks promene izgrađenosti u Srbiji, 2014/1975 / </strong><em><strong>Lot Coverage Change Index, 2014/1975</strong></em></summary><ul id="feab70d0-1d94-491b-b76b-edf20d3aee61" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_4/INDICATOR%204%20Lot%20Coverage%20Change%20Index%201975-2014.pdf">INDICATOR 4 Lot Coverage Change Index 1975-2014.pdf</a></li></ul><ul id="fbb62e51-953e-4179-9fcb-83a932befc14" class="bulleted-list"><li>GeoTIFF:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_4/GeoTIFF/Lot_Cvge_Chg_Ind_1975-2014.tif">Lot_Cvge_Chg_Ind_1975-2014.tif</a></li></ul><ul id="cb631cf0-1505-497b-ab37-cc57b4032cea" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_4/Style/Style_Lot_Cvge_Chg_Ind_1975-2014.qml">Style_Lot_Cvge_Chg_Ind_1975-2014.qml</a></li></ul></details></li></ul><ul id="a1148587-9210-4d6e-8c1c-e8948da69424" class="toggle"><li><details open=""><summary><strong>Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja, 2015 / </strong><em><strong>‘Real Abandoned’ and Temporarily Used Built-up Areas, 2015</strong></em></summary><ul id="afe72ca1-154c-495c-b8ce-e6c408cad884" class="bulleted-list"><li>Meta:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_5/INDICATOR%205%20Real%20Abandoned%E2%80%99%20and%20Temporarily%20Used%20Built-up%20Areas%2C%202015.pdf">INDICATOR 5 Real Abandoned’ and Temporarily Used Built-up Areas, 2015.pdf</a></li></ul><ul id="a175c51f-3653-4d0b-abf5-3c27c99aa440" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_5/Sh_LA_Class_Mun.zip">Sh_LA_Class_Mun.zip
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_5/Sh_LA_Class_Settl.zip">Sh_LA_Class_Settl.zip</a></li></ul><ul id="63c0147c-9c46-4b5f-ab51-adf860289dcd" class="bulleted-list"><li>TXT:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_5/TXT/Sh_LA_Class_Mun.txt">Sh_LA_Class_Mun.txt
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_5/TXT/Sh_LA_Class_Settl.txt">Sh_LA_Class_Settl.txt</a></li></ul><ul id="cfa0e57d-27d3-4967-9200-1bb3da362745" class="bulleted-list"><li>GeoTIFF:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_5/Ngt_Lt_Built-Up.tif">Ngt_Lt_Built-Up.tif</a> <mark class="highlight-yellow_background">⚠️ File size 1.64GB</mark></li></ul><ul id="83dacc53-d465-4e94-a5cb-5b7357d5a505" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_5/Style/Style_Ngt_Lt_Built-Up.qml">Style_Ngt_Lt_Built-Up.qml</a></li></ul></details></li></ul><ul id="46dff8ff-7434-4540-8d19-69699a1b7c93" class="toggle"><li><details open=""><summary><strong>Hipsometrijska struktura (visinske zone) opština i naselja / </strong><em><strong>Hypsometric Structure (Altitudinal Zonality) of municipalities and settlements</strong></em></summary><ul id="d681038a-4ae7-4ec1-b95c-6d292946bbd3" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_6/INDICATOR%206%20Hypsometric%20Structure%20of%20municipalities%20and%20settlements.pdf">INDICATOR 6 Hypsometric Structure of municipalities and settlements.pdf</a></li></ul><ul id="fc69a91a-8245-49d4-8e70-f8a628039449" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_6/Hypso_Struct_Mun.zip">Hypso_Struct_Mun.zip</a>
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_6/Hypso_Struct_Settl.zip">Hypso_Struct_Settl.zip</a></li></ul><ul id="db271952-c352-418a-ab33-3682dc3e1311" class="bulleted-list"><li>TXT:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_6/TXT/Hypso_Struct_Mun.txt">Hypso_Struct_Mun.txt
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_6/TXT/Hypso_Struct_Settl.txt">Hypso_Struct_Settl.txt</a></li></ul></details></li></ul><ul id="112f749a-c75a-4f45-9479-c950f839d0f9" class="toggle"><li><details open=""><summary><strong>„Osvetljenost prostora” / </strong><em><strong>‘Spatial Lighting’</strong></em></summary><ul id="cc54846d-b020-46b8-afeb-25e371eeb50f" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/INDICATOR%207%20Spatial%20Lighting.pdf">INDICATOR 7 Spatial Lighting.pdf</a></li></ul><ul id="81b5bf3f-1ec6-44f3-9b00-63eda63d512d" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/LA_SOL_Mun.zip">LA_SOL_Mun.zip
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/LA_SOL_Settl.zip">LA_SOL_Settl.zip</a></li></ul><ul id="eecb5c38-e550-482b-8994-f2c220aec430" class="bulleted-list"><li>TXT:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/TXT/LA_SOL_Mun.txt">LA_SOL_Mun.txt
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/TXT/LA_SOL_Settl.txt">LA_SOL_Settl.txt</a></li></ul><ul id="7bd6a833-155c-46dc-9c4e-0b7387d99aa7" class="bulleted-list"><li>Style:<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/Style/Style_Ngt_Lt_15-19.qml">
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/Style/Style_LA_15.qml">Style_LA_15.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/Style/Style_LA_15-19.qml">Style_LA_15-19.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/Style/Style_SOL_15.qml">Style_SOL_15.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_7/Style/Style_SOL_15-19.qml">Style_SOL_15-19.qml</a></li></ul></details></li></ul><ul id="4b016c9b-adb0-4c53-bd5e-d67fc7908e5f" class="toggle"><li><details open=""><summary><strong>Sezonski karakter naselja / </strong><em><strong>Seasonal Character of the Settlement’ Network</strong></em></summary><ul id="f5deee38-16de-4ace-818a-186a6bdfe3f8" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/INDICATOR%208%20Seasonal%20Character%20of%20the%20Settlement%E2%80%99%20Network.pdf">INDICATOR 8 Seasonal Character of the Settlement’ Network.pdf</a></li></ul><ul id="55c61810-1d14-400d-beda-66e1baf0723e" class="bulleted-list"><li>GeoTIFF:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Aut_Sum.tif">Diff_Aut_Sum.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Spr_Aut.tif">Diff_Spr_Aut.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Spr_Sum.tif">Diff_Spr_Sum.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Win_Aut.tif">Diff_Win_Aut.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Win_Spr.tif">Diff_Win_Spr.tif
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/GeoTiff/Diff_Win_Sum.tif">Diff_Win_Sum.tif</a></li></ul><ul id="2b4919bd-77e0-409d-8787-a1fa31908f8f" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_8/Style/Style_Sznl_Diff.qml">Style_Sznl_Diff.qml</a></li></ul></details></li></ul><ul id="a5f84d5d-ad46-4be4-9fb5-3797a632a541" class="toggle"><li><details open=""><summary><strong>Gustina putne mreže / </strong><em><strong>Road Network Density</strong></em></summary><ul id="45af6cfd-ac60-426b-a336-42a4c7edc9c2" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_9/INDICATOR%209%20Road%20network%20Density.pdf">INDICATOR 9 Road network Density.pdf</a></li></ul><ul id="98adcc63-5f3f-46ea-b917-5e0b7e11af3a" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_9/Road_Net_Dens_Mun.zip">Road_Net_Dens_Mun.zip
+</a><a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_9/Road_Net_Dens_Pop_Chg_1975-2015.zip">Road_Net_Dens_Pop_Chg_1975-2015.zip</a></li></ul><ul id="300b2e81-dfd9-4198-9ccf-14d3ccfdaad2" class="bulleted-list"><li>TXT:
+<a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_9/TXT/Road_Net_Dens_Mun.txt">Road_Net_Dens_Mun.txt</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_9/TXT/Road_Net_Dems_Mun.txt">
+</a><a href="https://github.com/geoanaliticari/depopulacija/raw/master/data/Indicator_9/TXT/Road_Net_Dens_Pop_Chg_1975-2015.txt">Road_Net_Dens_Pop_Chg_1975-2015.txt</a></li></ul><ul id="6b873f55-fd1f-4a23-9fac-cf9259de84fe" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_9/Style/Style_Road_Net_Dens_Mun.qml">Style_Road_Net_Dens_Mun.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_9/Style/Style_Road_Net_Pop_Chg_1975-2015.qml">Style_Road_Net_Pop_Chg_1975-2015.qml</a></li></ul></details></li></ul><ul id="9b247b93-ea92-4543-9ce7-5bc1a5d25e0d" class="toggle"><li><details open=""><summary><strong>Promena gustine naseljenosti po visinskim pojasevima / </strong><em><strong>Altitudinal Conditionality of the Population Density’ Changes</strong></em></summary><ul id="8c9f3248-a924-446f-b13c-0f1938da70af" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_10/INDICATOR%2010%20Altitudinal%20Conditionality%20of%20the%20Population%20Density%E2%80%99%20Changes.pdf">INDICATOR 10 Altitudinal Conditionality of the Population Density’ Changes.pdf</a></li></ul><ul id="a1837303-cbf6-40aa-89dc-5c4a940ab981" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_10/Alt_Pop_Dens_Mun.zip">Alt_Pop_Dens_Mun.zip
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_10/Alt_Pop_Dens_Settl.zip">Alt_Pop_Dens_Settl.zip</a></li></ul><ul id="e4e009b2-d34a-413c-aa17-ab682492df3f" class="bulleted-list"><li>TXT:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_10/TXT/Alt_Pop_Dens_Mun.txt">Alt_Pop_Dens_Mun.txt
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_10/TXT/Alt_Pop_Dens_Settl.txt">Alt_Pop_Dens_Settl.txt</a></li></ul></details></li></ul><ul id="6bec94bb-66d9-4a3b-a848-8b3f7495acd1" class="toggle"><li><details open=""><summary><strong>Pristupačnost kao determinanta depopulacije / </strong><em><strong>Accessibility as a Determinant of the Depopulation</strong></em></summary><ul id="fdc9f233-4fb1-4716-b7fb-f54b75e7cbe4" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_11/INDICATOR%2011%20Accessibility%20as%20a%20Determinant%20of%20the%20Depopulation.pdf">INDICATOR 11 Accessibility as a Determinant of the Depopulation.pdf</a></li></ul><ul id="45a23d32-4480-47e9-a800-c53bfb27df7a" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_11/Access_and_Pop_Chg_1975-2015.zip">Access_and_Pop_Chg_1975-2015.zip</a></li></ul><ul id="5adec033-71d5-4fd0-8c65-519227543c25" class="bulleted-list"><li>TXT:<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_11/Access_and_Pop_Chg_1975-2015.zip">
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_11/TXT/Access_and_Pop_Chg_1975-2015.txt">Access_and_Pop_Chg_1975-2015.txt</a></li></ul><ul id="02871ab7-5f9b-4c46-bc73-fba609e63d20" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_11/Style/Style_Access_and_Pop_Chg_1975-2015.qml">Style_Access_and_Pop_Chg_1975-2015.qml</a></li></ul></details></li></ul><ul id="e1687925-b71a-4abd-9169-0ac1843e74ed" class="toggle"><li><details open=""><summary><strong>Korišćenje zemljišta u funkciji populacionih promena / </strong><em><strong>Land Cover as a ‘Tool for Monitoring’ Population Change</strong></em></summary><ul id="40cac401-f735-4f97-97ac-0870f77320bc" class="bulleted-list"><li>Meta:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/INDICATOR%2012%20Land%20Cover%20as%20a%20%E2%80%98Tool%20for%20Monitoring%E2%80%99%20Population%20Change.pdf">INDICATOR 12 Land Cover as a ‘Tool for Monitoring’ Population Change.pdf</a></li></ul><ul id="68282aff-6941-4b89-bdea-49bba2645350" class="bulleted-list"><li>Shape:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/CLC_Chg_and_Pop_Chg.zip">CLC_Chg_and_Pop_Chg.zip</a></li></ul><ul id="4643e929-6c46-4519-8353-524cb9b7c65c" class="bulleted-list"><li>TXT:<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/CLC_Chg_and_Pop_Chg.zip">
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/TXT/CLC_Chg_and_Pop_Chg.txt">CLC_Chg_and_Pop_Chg.txt</a></li></ul><ul id="f88101e7-fae7-4363-b67b-f85f653e6b6b" class="bulleted-list"><li>Style:
+<a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_211.qml">Style_ChgCLC_211.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_231.qml">Style_ChgCLC_231.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_242.qml">Style_ChgCLC_242.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_243.qml">Style_ChgCLC_243.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_31.qml">Style_ChgCLC_31.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_321.qml">Style_ChgCLC_321.qml
+</a><a href="https://geoanaliticari.github.io/depopulacija/data/Indicator_12/Style/Style_ChgCLC_324.qml">Style_ChgCLC_324.qml</a></li></ul></details></li></ul><p id="00173356-da25-4db9-adba-935f8e4fbe10" class="">
+</p><hr id="4d5b9842-03eb-4f2f-8356-714037b220ea"/><div id="1456bfc8-6e50-4857-b865-c9dd41873097" class="column-list"><div id="b0c0aaed-53cb-44b4-a65d-8839d45a9091" style="width:4.166666666666666%" class="column"><figure id="0e5d6d26-5437-4135-9bed-10eada93e23c" class="image"><a href="Untitled.png"><img style="width:72px" src="Untitled.png"/></a></figure></div><div id="c9167d79-c4f7-4d3e-bb6d-39bd7a1e3ac8" style="width:8.333333333333332%" class="column"><figure id="ae7a4709-c576-4ffb-9e3d-d2b7af1e2dfe" class="image"><a href="Untitled%201.png"><img style="width:192px" src="Untitled%201.png"/></a></figure><p id="97101506-57be-437a-9b36-926f56fd6f94" class="">
+</p></div><div id="c1168704-2990-453d-b3ad-c4ebb9116aa6" style="width:87.50000000000003%" class="column"><p id="e607d52a-a506-4f1d-9a96-4ae03f729181" class=""><mark class="highlight-gray">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</mark></p><p id="acc9bb83-ce23-430d-9292-5e8ce1b4feed" class=""><mark class="highlight-gray"><em>This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.</em></mark></p><p id="9c118f0e-ddf8-481a-87f6-56e6743bbd93" class="">
+</p></div></div><p id="b308c228-08ff-480b-a51f-882584b574de" class="">
+</p></div></article></body></html>

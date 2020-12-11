@@ -1,0 +1,633 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hypsometric Structure 
+(Altitudinal Zonality) of Municipalities and Settlements</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f2e4bdb8-bc15-44de-a910-5aa260f18b0e" class="page sans"><header><h1 class="page-title"><mark class="highlight-gray">Hypsometric Structure 
+(Altitudinal Zonality) of Municipalities and Settlements</mark></h1></header><div class="page-body"><p id="d41b3964-3664-42f1-a63c-c76bbc15d10a" class="">
+</p><figure id="0f5a5f6d-eb2e-4b69-930a-50ab9e2af0d6" class="image"><a href="Hypsometric%20Structure%20(Altitudinal%20Zonality)%20of%20Mu%20f2e4bdb8bc1544dea9105aa260f18b0e/Elevation_Map.jpeg"><img style="width:2480px" src="Hypsometric%20Structure%20(Altitudinal%20Zonality)%20of%20Mu%20f2e4bdb8bc1544dea9105aa260f18b0e/Elevation_Map.jpeg"/></a><figcaption><em>Hypsometric map of Serbia</em></figcaption></figure><div id="61de74bf-798b-4076-8d62-694b66b6485f" class="column-list"><div id="d84093f5-2976-45a9-9271-4d1fe21d2bbf" style="width:33.333333333333336%" class="column"><figure id="3dd9c8e6-ae0f-4a99-96cb-fcb617af2c94" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled.png"/></a><figcaption>1. Choose a municipality and scroll down</figcaption></figure></div><div id="324992af-0618-4746-a9eb-2f41d7cce460" style="width:33.333333333333336%" class="column"><figure id="274d6e7e-a7e9-4a3a-9bdd-2f5b2f08295d" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c/Untitled%201.png"/></a><figcaption>2. Choose a parameter</figcaption></figure></div><div id="a1a513e2-bfee-4640-94f5-6dbb03ba8555" style="width:33.33333333333333%" class="column"><figure id="08fc176f-afc7-4989-932c-48d7c3984689" class="image"><a href="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947/Untitled.png"><img style="width:100px" src="../Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947/Untitled.png"/></a><figcaption>3. Hover over the bar to see more details</figcaption></figure></div></div><figure id="d10a47bd-a4bf-4ad2-aa7a-d01fc715cd16"><div class="source"><a href="https://maps.depopulacija.rs/altitudinal-conditionality-of-the-population-density/content/index.html">https://maps.depopulacija.rs/altitudinal-conditionality-of-the-population-density/content/index.html</a></div></figure><p id="8d1f35b5-aa95-4e9f-8aaf-00e51783ced6" class="">
+</p><p id="d3ccf136-add9-470d-a8cf-2faae71e8ded" class="">Depopulation is mainly associated with hilly and mountainous areas, which prevail in southern parts of Serbia. As the altitude increases, the number of settlements steadily declines, while lower zones are significantly more represented among settled areas. A hypsometric structure of Serbia’s territory according to settlements/municipalities and individual altitude zones (0–200 m, 200–500 m, 500–800 m, 800–1000 m, 1000–1500 m, &gt; 1500 m a.s.l.) was defined and the average altitude was determined. To calculate this indicator, a digital terrain model <mark class="highlight-blue"><a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1/view">EU-DEM v1.1</a></mark><mark class="highlight-blue"> </mark>[European Environment Agency] was combined with an administrative division (<mark class="highlight-blue"><a href="https://geosrbija.rs/usluge/otvoreni-podaci-nigp/">GeoSrbija</a></mark><mark class="highlight-blue"> </mark>[National Data Infrastructure, Republic Geodetic Authority]).</p><p id="9db8d2ad-7d98-4c1d-b4c8-82c2f94bd5e9" class="">Serbia is a predominantly hilly country with an average altitude of 459 m a.s.l. and the mountain hypsometric zone (200–500 m a.s.l.) as the most dominant belt. There are differences within spatial units and they are reflected in the variability of hypsometric structures at the settlement and municipal levels. A significant number of settlements are concentrated in the first three altitude zones. Above 800 m a.s.l., they are three times fewer in number. Only three settlements can be found above 1500 m a.s.l. and these are mountain tourist centres (Kopaonik Mt. and Stara Planina Mt.) which sustainability is ensured by winter tourism activities. It may be observed that the altitude of 800 m a.s.l. is the upper threshold for settlement distribution. Above that altitude limit settlements are barely sustainable and demographically endangered.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4a3cb95e-5be9-4b2e-84b4-002ddbcc30b1"><div style="font-size:1.5em"><span class="icon">📝</span></div><div style="width:100%"><mark class="highlight-gray">Incomplete spatial coverage of the indicator values is a consequence of limitations in the used data sources: lack of administrative boundaries of settlements for the territory of Kosovo and Metohija. For the municipal level, the entire research area is covered.</mark></div></figure><hr id="42069e6d-6194-4604-a4e1-89003fa94906"/><p id="0539c91e-2336-41d8-adbe-76aaff6ce205" class=""><a href="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="../Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a> </p><hr id="49876438-3931-407c-af39-5c8c1f1a7c3b"/><p id="143dc4d8-b016-4bd5-9c49-040971bbb411" class="">
+</p><p id="afeda955-6e62-4973-b6fe-cd1dc9455ac3" class=""><a href=""><mark class="highlight-blue">Back to top ↑</mark></a></p><hr id="503ddcac-7683-4f9f-9a3d-c874336974b8"/><div id="28c07c4f-e3e7-47d2-8c44-1bdb27e5dce8" class="column-list"><div id="39feb724-f8f2-4327-9a1a-9682ff3a0441" style="width:12.5%" class="column"><figure id="3dc60afa-f896-41a4-82c8-bc39e7540bb8" class="image"><a href="../Untitled.png"><img style="width:121px" src="../Untitled.png"/></a></figure></div><div id="4974fb5c-e929-42b0-8dd8-1755ad7dd48d" style="width:29.166666666666664%" class="column"><figure id="1744b243-12da-4071-a72d-8bc5e3e1ed81" class="image"><a href="../Untitled%201.png"><img style="width:210px" src="../Untitled%201.png"/></a></figure></div><div id="14f20563-d5b8-40d0-9a69-85b386881f38" style="width:58.333333333333336%" class="column"><p id="f007d3c6-916b-4943-862d-dd865199e13c" class=""><mark class="highlight-gray">This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.</mark></p></div></div><p id="57a2ec10-bee5-46b6-ab8b-d859b866f333" class="">
+</p></div></article></body></html>

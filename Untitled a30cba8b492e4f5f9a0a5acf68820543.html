@@ -1,0 +1,633 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title> </title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6634120f-e79e-41a5-8893-76939533eff2" class="page sans"><header><img class="page-cover-image" src="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Web_Header-04.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Logo_GA.png"/></div><h1 class="page-title"> </h1></header><div class="page-body"><div id="8863f328-fb27-4463-bd21-39336b5d437e" class="column-list"><div id="95b89d8e-ac27-414b-973f-ed620be92a39" style="width:50%" class="column"><h1 id="e466b8e3-1711-4f64-b07a-960239f7043e" class="">Daljinska detekcija (de)populacionih procesa u Srbiji</h1><p id="b75ce092-2548-480c-a32b-b40cfac77d4e" class="">Pred vama je platforma koja je nastala kao rezultat rada na projektu „Daljinska detekcija (de)populacionih procesa” (finansiran od strane <mark class="highlight-blue"><a href="https://www.rs.undp.org/content/serbia/sr/home.html">Programa Ujedinjenih nacija za razvoj – UNDP</a></mark> i <mark class="highlight-blue"><a href="https://serbia.unfpa.org/">Populacionog fonda Ujedinjenih Nacija – UNFPA </a></mark>u Srbiji) sa idejom o formiranju održivog okvira za sagledavanje i bolje razumevanje depopulacije i faktora koji utiču na pojavu ili dinamiku ovog procesa u Srbiji. Pored tradicionalnih izvora podataka pomoću kojih se iskazuju kvantitativne promene populacionih pokazatelja u Srbiji, platforma se u velikoj meri oslanja na alternativne izvore (npr. satelitski snimci noćnih svetala, digitalni model terena, GHS Population Grid datasets), kojima se nastoji precizno utvrditi i prostorno locirati potencijalno demografski „prazan” prostor. Prilikom kreiranja seta indikatora za detekciju depopulacije na teritoriji Srbije, konsultovani su različiti setovi podataka, bazirani na brojnim faktorima koji utiču na pojavu ovog procesa i determinišu tendencije prostorne ekspresije i promene u njihovom intenzitetu. Ponuđeni umrežen set podataka pruža raznovrsne mogućnosti za sagledavanje i razumevanje prostornih promena u populacionoj dinamici na teritoriji Srbije, tematski grupisanih u četiri kategorije prema pojavi na koju ukazuju i na čije izučavanje upućuju: demografski, (urbo)morfološki, (geo)prostorni i kompozitni.</p><p id="90a848db-d6da-4f20-a613-0b91797ec726" class="">
+</p><p id="3bfc0e55-cd0c-4810-b583-612e0188c84a" class="">Nastavi čitanje:</p><figure id="fafc0fd8-8d20-4a09-ac4d-26b6d236dae8" class="link-to-page"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8.html"><span class="icon">🇷🇸</span>Daljinska detekcija (de)populacionih procesa u Srbiji</a></figure><figure id="5f337985-5308-4a07-9b89-d8a1bab18c26" class="link-to-page"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/O%20ideji%205f33798553084a079b89d8a1bab18c26.html"><span class="icon">❓</span>O ideji</a></figure></div><div id="0b7107a9-d560-43d9-91bd-8d719c504ef1" style="width:50%" class="column"><h1 id="1d90ae90-a8a6-4ab5-9970-737efd1ae086" class=""><em>Remote detection of (de)population processes in Serbia</em></h1><p id="f39dfeb6-4afa-4e48-9b1d-a46b434bccbf" class=""><em>The platform is a result of the project “Remote detection of (de)population processes” (funded by </em><a href="https://www.rs.undp.org/content/serbia/en/home.html"><mark class="highlight-blue"><em>United Nations Development Programme – UNDP</em></mark></a><em> and </em><a href="https://serbia.unfpa.org/"><mark class="highlight-blue"><em>United Nations Population Fund – UNFPA</em></mark></a><em>) and it has been created with the idea of establishing a sustainable framework for perceiving and better understanding depopulation and factors affecting the occurrence or dynamics of this process in Serbia. In addition to traditional data sources that are used to express quantitative changes of population indicators in Serbia, the platform also relies on alternative sources (e.g. satellite images of nightlights, digital terrain model, GHS Population Grid datasets). Various datasets have been taken into consideration in creating a set of indicators for the detection of depopulation in the territory of Serbia, based on numerous factors that influence the occurrence of this process and determine the tendencies of spatial expression and changes in their intensity. The offered interrelated dataset provides various possibilities for perceiving and understanding spatial changes in population dynamics on the territory of Serbia, and it also offers the possibility to predict their future scenarios. According to the issue and phenomenon that they primarily indicated and refers to, the indicators are classified into four groups: demographic indicators, (urban)morphological, (geo)spatial, and composite indicators.</em></p><p id="936f54e4-f687-452c-b189-24bc6b28b1e6" class="">
+</p><p id="c52df6cc-fbb6-425f-9809-39169000a800" class=""><em>Continue reading:</em></p><figure id="54aee024-92f2-41d9-b600-25bb78b9d6a6" class="link-to-page"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Remote%20detection%20of%20(de)population%20processes%20in%20Se%2054aee02492f241d9b60025bb78b9d6a6.html"><span class="icon">🇬🇧</span>Remote detection of (de)population processes in Serbia</a></figure><figure id="9f8389b6-9a36-4452-8d7f-6b3e5113386e" class="link-to-page"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/About%20the%20Idea%209f8389b69a3644528d7f6b3e5113386e.html"><span class="icon">❓</span>About the Idea</a></figure></div></div><p id="ef255858-8e7b-4b85-9f05-30847dedca84" class="">
+</p><hr id="501cf6e8-b04f-49d9-aa53-f3025309e7c3"/><figure id="09f5513e-55dd-4ab3-8e73-63c69ad4214c" class="link-to-page"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a></figure><p id="10e5a618-a475-4a75-a597-1ea6562e9de3" class="">
+</p><hr id="77ea82f5-1afc-4b71-9f34-61b85fddaf15"/><div id="5ae004ad-f078-4e22-a9da-aae95bc42352" class="column-list"><div id="77e62b1d-8099-4afb-8ed0-199d24aa5035" style="width:4.166666666666666%" class="column"><figure id="a30cba8b-492e-4f5f-9a0a-5acf68820543" class="image"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Untitled.png"><img style="width:72px" src="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Untitled.png"/></a></figure></div><div id="5a2a735f-b3df-4692-8a50-9e4ba478d836" style="width:8.333333333333332%" class="column"><figure id="21096d1e-505c-49b6-9541-302c14112383" class="image"><a href="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Untitled%201.png"><img style="width:192px" src="Untitled%20a30cba8b492e4f5f9a0a5acf68820543/Untitled%201.png"/></a></figure><p id="d6f84e7c-e073-4e3c-9a15-634e781d3065" class="">
+</p></div><div id="719ecf80-2f3a-4193-86d8-4eba6594724e" style="width:87.5%" class="column"><p id="31496033-2816-4bd7-91df-aaeb55d2e836" class="block-color-gray">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</p><p id="8c05a258-25e3-4162-b4a2-96e144d9c018" class="block-color-gray"><em><mark class="highlight-gray">This web site has been produced with the United Nations Development Programme (UNDP) and UN Population Fund (UNFPA) support, within the Depopulation Data Challenge Call. The contents of this site are the sole responsibility of the team “Geoanalitičari” and do not necessarily reflect the views of UNDP, nor UNFPA.</mark></em></p><p id="1235e45c-6bb4-4546-8b80-6a1fc128408d" class="">
+</p></div></div></div></article></body></html>

@@ -1,0 +1,630 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Daljinska detekcija (de)populacionih procesa u Srbiji</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fafc0fd8-8d20-4a09-ac4d-26b6d236dae8" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🇷🇸</span></div><h1 class="page-title">Daljinska detekcija (de)populacionih procesa u Srbiji</h1></header><div class="page-body"><hr id="2da15469-49f5-4cd1-9985-a26c9fbf09b1"/><ul id="beae4e81-52fd-4a1f-b6b6-de6307b3302b" class="toggle"><li><details open=""><summary><strong>Lista depopulacionih indikatora</strong></summary><nav id="468d46e4-7ddd-490f-9727-f6f3b01eb637" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1ad28263-b56c-47ee-8543-5cda0fd6c1dc">1. Starosna struktura stanovništva prema visinskim zonama, 2011</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ef3b3c66-821c-457c-b91f-109b91c5cb58">2. Indeks promene broja stanovnika, 2015/1975</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e746c9b2-0d52-4628-88f6-b4de8506e87e">3. Gustina naseljenosti u Srbiji, 2015</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2614f7ce-8e11-4b53-b5ae-e6b501b8ba72">4. Indeks promene izgrađenosti, 2014/1975</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d06a7abe-d527-4fa4-8654-996e24402980">5. Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja, 2015</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#67358c03-8188-4215-8559-308aab09091b">6. Hipsometrijska struktura (visinska zonalnost) opština i naselja</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#27728a93-ef03-46b7-87a4-ce7f3c7e13c6">7. Noćna svetla</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e5737bd7-fea3-49c7-8da4-9cf6589446b5">8. Sezonski karakter naselja</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e5d1acf0-7d00-4492-a494-7ffe9ec9a220">9. Gustina putne mreže</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9ee6de4c-aabe-42c2-a7c6-e3c792ed6788">10. Promena gustine naseljenosti po visinskim pojasevima</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6bbb08f9-34fb-482d-bd09-c8440b1e53fa">11. Pristupačnost kao determinanta depopulacije</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5dbd903f-959d-4b50-80b6-98f4271d409d">12. Namena zemljišta u funkciji populacionih promena</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2da0aa22-cb19-4c79-861c-a4339c6662a1">Sadržaj</a></div></nav></details></li></ul><hr id="16d683db-24a5-478e-a611-5b08320fd821"/><h2 id="1ad28263-b56c-47ee-8543-5cda0fd6c1dc" class="">1. Starosna struktura stanovništva prema visinskim zonama, 2011</h2><p id="30a3dbe1-1a50-483b-b346-af253f5e5b84" class=""><em>Gde su stari?</em></p><p id="7c6fbdf3-242b-4b4f-a5a0-80efbc90e367" class=""><em>Da li u planinskim krajevima dominira staro stanovništvo?</em></p><p id="3432d04e-6025-4b95-821a-f465094e8960" class="">Indikator <em><strong>Starosna struktura stanovništva prema visinskim zonama</strong></em><strong> </strong>omogućava praćenje zavisnosti procesa „starenja” i prosečne nadmorske visine.</p><p id="c8a98e49-e342-470d-ab71-8b8348789db1" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c.html">Nastavi čitanje...</a></mark></p><h2 id="ef3b3c66-821c-457c-b91f-109b91c5cb58" class="">2. Indeks promene broja stanovnika, 2015/1975</h2><p id="8c41b52c-8fbd-4698-9552-cb13cf9a1877" class=""><em>Depopulacija – izazov ili realnost?</em></p><p id="42c8845a-5e4f-464a-bca3-7bc5511e53f7" class=""><em>Koliko brzo Srbija gubi stanovništvo?</em></p><p id="b7ae08d0-7ac2-4120-8316-bffdc9a7b59c" class=""><em>Gde je depopulacija najizraženija?</em></p><p id="2bd0aa80-cb31-4114-9597-d4834bbccc77" class="">Indikator <strong><em>Indeks promene broja stanovnika </em></strong>se koristi za monitoring i merenje dinamike procesa depopulacije. Direktno pokazuje gde i koliko se procentualno stanovništvo smanjilo ili povećalo na određenom prostoru.</p><p id="d01f7642-e28e-4739-8cd4-e411c5830b71" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Indeks%20promene%20broja%20stanovnika,%202015%201975%20accfd313836942a49fc53981a8c1cf2b.html">Nastavi čitanje...</a></mark></p><h2 id="e746c9b2-0d52-4628-88f6-b4de8506e87e" class="">3. Gustina naseljenosti u Srbiji, 2015</h2><p id="d3553e82-3967-405e-b54b-22e0eecb3c82" class=""><em>Koji su polovi koncentracije stanovništva?</em></p><p id="64bd90fa-c082-4930-bbc7-7b44d4c2666c" class=""><em>Gde se rasipa stanovništvo toliko da se pojedini krajevi postepeno prazne? </em></p><p id="1a3063e0-38e9-4fb4-ba88-6dd722d7a4c5" class=""><em>Koji prostori rastu u visinu?</em></p><p id="79728ace-b8f6-47d3-ab9c-a4aa7a8661d1" class=""><em><strong>Gustina naseljenosti</strong></em> je jedan od najčešće korišćenih indikatora u praćenju prostornih promena i delimitaciji ruralnih i urbanih područja (OECD; EU Commission; ESPON). Ukazuje na atraktivnost prostora za naseljavanje.</p><p id="96e0ccf7-7231-4ccc-9450-366e471581c4" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Gustina%20naseljenosti%20u%20Srbiji,%202015%209e117657ea2d4d70ad4310998432e612.html">Nastavi čitanje...</a></mark></p><h2 id="2614f7ce-8e11-4b53-b5ae-e6b501b8ba72" class="">4. Indeks promene izgrađenosti, 2014/1975</h2><p id="5fe6e00f-81da-4d77-a37c-5c424a48e499" class=""><em>Gde ćete da živite? </em></p><p id="ce61e4d9-a3c4-484a-8134-bfab6d25a1c2" class=""><em>Koji su prostori atraktivni za izgradnju? </em></p><p id="9899ddae-16d3-4781-a24c-0b39008f21ce" class=""><em><strong>Indeks izgrađenosti</strong></em> je urbanistički pokazatelj koji je u direktnoj vezi sa morfologijom i fizionomijom prostornih celina, prikazanom kroz atraktivnost prostora za novo naseljavanje i izgradnju.</p><p id="3beacba2-fb56-4d44-bda3-edc433462a6b" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Indeks%20promene%20izgra%C4%91enosti%20u%20Srbiji,%202014%201975%200b779b24962c46f59728b9ae6e03e019.html">Nastavi čitanje...</a></mark></p><h2 id="d06a7abe-d527-4fa4-8654-996e24402980" class="">5. Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja, 2015</h2><p id="00b8e752-fbd9-47f9-831d-0976150dc910" class=""><em>Gde zaista nema stanovnika?</em></p><p id="78af7780-d18d-4a09-ba29-3ce29c4f3e05" class=""><em>Koji su objekti napušteni?</em></p><p id="3883986f-7205-4ce0-8e8d-c772f61daaea" class="">Indikator <strong><em>Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja</em></strong> služi za preciznije utvrđivanje napuštenih ili slabo naseljenih prostora putem izučavanja satelitskih snimaka noćnih svetala.</p><p id="8c23ae5a-ba8a-4052-bcaa-bcb562680299" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Trajno%20i%20privremeno%20napus%CC%8Cteni%20objekti%20kao%20pokazat%205553f4885776456dadd5db5c9c49ffc2.html">Nastavi čitanje...</a></mark></p><h2 id="67358c03-8188-4215-8559-308aab09091b" class="">6. Hipsometrijska struktura (visinska zonalnost) opština i naselja</h2><p id="f25402b3-db92-425f-a05a-750d793f1059" class=""><em>Koja su „najviša” naselja u Srbiji?</em></p><p id="8801c0e8-08f7-4540-aef2-ca1cb857bcda" class=""><em>Na kojoj nadmorskoj visini se nalazi granica za formiranje naselja?</em></p><p id="32e1c597-89ed-4514-a1eb-ecc2f2d27c82" class="">Indikator <em><strong>Hipsometrijska struktura (visinska zonalnost) opština i naselja</strong></em> ispituje u kojoj meri morfometrija terena determiniše distribuciju naselja.</p><p id="d02eba68-9561-4d5a-9b84-986ac5071602" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947.html">Nastavi čitanje...</a></mark></p><h2 id="27728a93-ef03-46b7-87a4-ce7f3c7e13c6" class="">7. Noćna svetla</h2><p id="c74a1b68-158c-4b1e-acb1-f749a591df5d" class=""><em>Gde je „pao mrak” u Srbiji?</em></p><p id="ad8521ce-0b1c-4367-9b7d-c6112aa9f7b6" class=""><em>Na kojim prostorima je umanjena sveukupna aktivnost?</em></p><p id="31ddb221-a1e6-4262-bcb1-5f781a1cc12c" class="">Indikator <em><strong>Noćna svetla</strong></em>, baziran na analizi satelitskih snimaka noćnih svetala, služi za realno sagledavanje stalne naseljenosti i ekonomske aktivnosti.</p><p id="0a75b42e-ce0d-40b5-b5eb-c5593bb6b20f" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092.html">Nastavi čitanje...</a></mark></p><h2 id="e5737bd7-fea3-49c7-8da4-9cf6589446b5" class="">8. Sezonski karakter naselja</h2><p id="b058e077-93c6-474e-9b52-5ed9087af1b7" class=""><em>Koji su prostori potpuno napušteni, a koji se povremeno koriste?</em></p><p id="8555bc32-6694-489c-a786-e1210bc953a3" class=""><em><strong>Sezonalnost u aktiviranju prostora</strong></em>, ustanovljeno putem satelitskih snimaka u različitim periodima tokom godine, bitan je indikator za sagledavanje naseljenosti i distribucije stanovništva.</p><p id="879e5d48-43b6-4148-91b4-16cfb3dbdff9" class=""><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Sezonski%20karakter%20naselja%203617bdb1077f47478a05ee40de84a7f4.html"><mark class="highlight-blue">Nastavi čitanje...</mark></a></p><h2 id="e5d1acf0-7d00-4492-a494-7ffe9ec9a220" class="">9. Gustina putne mreže</h2><p id="a650f486-0c7a-4674-ae98-79e54eba0255" class=""><em>U kakvoj su vezi putna mreža i populaciona veličina naselja?</em></p><p id="712aba70-6946-463e-96b6-ca5869120a6b" class=""><em>Da li loša infrastrukturna opremljenost uslovljava populacioni pad?</em></p><p id="b8025be0-edd6-43c0-bb82-cbef9eac8a4c" class=""><em><strong>Gustina i kvalitet putne mreže</strong></em> nekog prostora indirektno utiču na demografske promene, stepen razvijenosti i atraktivnost prostora za naseljavanje i obavljanje ekonomskih aktivnosti. Najčešće su gustina putne mreže i populaciona dinamika direktno uslovljene.</p><p id="01c375e1-b14a-42e7-9f93-6d10ba5929b1" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393.html">Nastavi čitanje...</a></mark></p><h2 id="9ee6de4c-aabe-42c2-a7c6-e3c792ed6788" class="">10. Promena gustine naseljenosti po visinskim pojasevima</h2><p id="ad2bd0c6-002f-49b0-bd6c-50d81fa2486a" class=""><em>Da li nadmorska visina uslovljava naseljavanje stanovništva?</em></p><p id="d07953f7-bbab-47e2-baf3-0f523091d6b2" class=""><em>Da li stanovništvo preferira život na većoj ili manjoj nadmorskoj visini?</em></p><p id="cafe9c83-ef75-4111-b2b7-e8f611ceb31a" class="">Koncentracija stanovništva na nekom prostoru uslovljena je nizom faktora, ali nadmorska visina ipak ima determinišuću ulogu. Sa promenom nadmorske visine menjaju se uslovi za formiranje naselja,kao i njegova fizionomija, što direktno uslovljava varijabilnost gustine naseljenosti.</p><p id="a9a065de-dd4c-443e-a0ab-cfb4dabd58f2" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Promena%20gustine%20naseljenosti%20po%20visinskim%20pojasevi%20b5f8e5916408444ebf727655b46bd962.html">Nastavi čitanje...</a></mark></p><h2 id="6bbb08f9-34fb-482d-bd09-c8440b1e53fa" class="">11. Pristupačnost kao determinanta depopulacije</h2><p id="b62fb3a2-fe14-405f-af57-51ba9b8df430" class=""><em>Izolacija = depopulacija? </em></p><p id="7e9935bd-075c-47dc-aa3c-4d584b68c51d" class=""><em>Da li je privlačno ono što je pristupačno?</em></p><p id="c33e659d-c960-46b8-9fff-24216a7eccdd" class="">Pristupačnost je faktor koji u značajnoj meri determiniše atraktivnost nekog područja za naseljavanje i ukupan razvoj, te indirektno utiče i na njegovu populacionu dinamiku. Saobraćajno izolovana područja su izložena kontinuiranim negativnim promenama, dok se prisupačna područja odlikuju povoljnijim populacionim trendom.</p><p id="a827101d-13a7-4aad-807d-4a63f897b09f" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Pristupac%CC%8Cnost%20kao%20determinanta%20depopulacije%20a4ddff6abf92410a95fd999293a65bb9.html">Nastavi čitanje...</a></mark></p><h2 id="5dbd903f-959d-4b50-80b6-98f4271d409d" class="">12. Namena zemljišta u funkciji populacionih promena</h2><p id="145e6761-34cd-4a8b-a97e-a5690e7173e1" class=""><em>Da li depopulacija utiče na promene u nameni zemljišta?</em></p><p id="72764bad-df43-43a8-8cda-5c949774963b" class=""><em>Da li depopulacija znači nedirnuta priroda?</em></p><p id="4ffd4160-00f4-4e1a-8cd7-1d16e730487e" class="">Indikator <em><strong>Namena zemljišta u funkciji populacionih promena</strong></em> koristi se u svrhu praćenja procesa koji se odvijaju u prostoru, u prvom redu demografskih promena i ukupnog (ekonomskog) razvoja. Konverzija zemljišta ka prirodnim ekosistemima ukazuje na umanjenu aktivnost, populacionu ili ekonomsku.</p><p id="a1411d38-e08d-41db-a198-1d2c51937caf" class=""><mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848.html">Nastavi čitanje...</a></mark></p><p id="d39793f9-6750-4753-b671-7e944516ea62" class="">
+</p><hr id="2ef1660c-90ae-48cf-bb4d-0b3e06088c90"/><p id="03f422d5-6175-49e0-aa27-c4ceba933533" class=""><a href=""><mark class="highlight-blue">Nazad na vrh strane ↑</mark></a></p><h1 id="2da0aa22-cb19-4c79-861c-a4339c6662a1" class="">Sadržaj</h1><figure id="216e03a0-74e8-41b0-b8f8-51a83a28ad4c" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Starosna%20struktura%20stanovnis%CC%8Ctva%20prema%20visinskim%20z%20216e03a074e841b0b8f851a83a28ad4c.html">Starosna struktura stanovništva prema visinskim zonama, 2011</a></figure><figure id="accfd313-8369-42a4-9fc5-3981a8c1cf2b" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Indeks%20promene%20broja%20stanovnika,%202015%201975%20accfd313836942a49fc53981a8c1cf2b.html">Indeks promene broja stanovnika, 2015/1975</a></figure><figure id="9e117657-ea2d-4d70-ad43-10998432e612" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Gustina%20naseljenosti%20u%20Srbiji,%202015%209e117657ea2d4d70ad4310998432e612.html">Gustina naseljenosti u Srbiji, 2015</a></figure><figure id="0b779b24-962c-46f5-9728-b9ae6e03e019" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Indeks%20promene%20izgra%C4%91enosti%20u%20Srbiji,%202014%201975%200b779b24962c46f59728b9ae6e03e019.html">Indeks promene izgrađenosti u Srbiji,  2014/1975</a></figure><figure id="5553f488-5776-456d-add5-db5c9c49ffc2" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Trajno%20i%20privremeno%20napus%CC%8Cteni%20objekti%20kao%20pokazat%205553f4885776456dadd5db5c9c49ffc2.html">Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja, 2015</a></figure><figure id="4ad88746-8deb-4e8e-bf6a-b07f77312947" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Hipsometrijska%20struktura%20(visinska%20zonalnost)%20ops%CC%8C%204ad887468deb4e8ebf6ab07f77312947.html">Hipsometrijska struktura 
+(visinska zonalnost) opština i naselja</a></figure><figure id="687e152c-ef7c-47b2-9969-e2eb4e395092" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Noc%CC%81na%20svetla%20687e152cef7c47b29969e2eb4e395092.html">Noćna svetla</a></figure><figure id="3617bdb1-077f-4747-8a05-ee40de84a7f4" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Sezonski%20karakter%20naselja%203617bdb1077f47478a05ee40de84a7f4.html">Sezonski karakter naselja</a></figure><figure id="282c7f11-5d5a-425a-8934-a4006687c393" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Gustina%20putne%20mrez%CC%8Ce%20282c7f115d5a425a8934a4006687c393.html">Gustina putne mreže</a></figure><figure id="b5f8e591-6408-444e-bf72-7655b46bd962" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Promena%20gustine%20naseljenosti%20po%20visinskim%20pojasevi%20b5f8e5916408444ebf727655b46bd962.html">Promena gustine naseljenosti po visinskim pojasevima</a></figure><figure id="a4ddff6a-bf92-410a-95fd-999293a65bb9" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Pristupac%CC%8Cnost%20kao%20determinanta%20depopulacije%20a4ddff6abf92410a95fd999293a65bb9.html">Pristupačnost kao determinanta depopulacije</a></figure><figure id="fd952117-338b-493a-9b84-3042fa68b848" class="link-to-page"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8/Namena%20zemljis%CC%8Cta%20u%20funkciji%20populacionih%20promena%20fd952117338b493a9b843042fa68b848.html">Namena zemljišta u funkciji populacionih promena</a></figure><hr id="9afb1ab0-5341-47cd-8205-2d71667cccc4"/><p id="7459ebc0-f4cc-4455-b65d-3bfc5d50a336" class=""><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html"><img class="icon" src="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c/database.png"/>Preuzimanje podataka / Download data</a></p><p id="986d82bf-4d8c-4569-8c84-853d0d8d18c3" class=""><a href="O%20ideji%205f33798553084a079b89d8a1bab18c26.html"><span class="icon">❓</span>O ideji</a> </p><hr id="cfe34413-ba81-45f6-890b-460c6a7627a7"/><div id="fe352896-4bec-417a-8969-449d5ea2307f" class="column-list"><div id="42689252-9039-4935-aa25-8213fcabcfd1" style="width:12.5%" class="column"><figure id="695d9a47-2447-406d-b046-3fe57407842b" class="image"><a href="Untitled.png"><img style="width:121px" src="Untitled.png"/></a></figure></div><div id="85d89a83-ed6d-4fcd-8693-7048686ac599" style="width:29.166666666666664%" class="column"><figure id="9264ed8c-07f4-4a61-bc19-40e6c77bc43e" class="image"><a href="Untitled%201.png"><img style="width:210px" src="Untitled%201.png"/></a></figure></div><div id="622b7c1e-8fe8-449c-a18f-d0ae63ad4386" style="width:58.33333333333336%" class="column"><p id="d7a22201-c044-40f3-a3fc-95da1719ebac" class="">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</p><p id="cc330dba-5158-4b34-87a5-d1a7d7d15401" class="">
+</p></div></div></div></article></body></html>

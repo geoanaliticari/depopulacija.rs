@@ -1,0 +1,633 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>O ideji</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5f337985-5308-4a07-9b89-d8a1bab18c26" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">❓</span></div><h1 class="page-title">O ideji</h1></header><div class="page-body"><nav id="fc1bab6f-7e0f-4607-87ab-58730f95d39d" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ef08de05-268a-4ec3-a3c2-4ffda4203ec7">Naša ideja</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55d8e141-5144-4d8b-9dff-d5ad7810bb0a">Šta je daljinska detekcija?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85293527-7dad-49e9-ae84-084df5197317">Metodološki okvir</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0a03d0d0-4893-4b0b-a8b2-db165992f191">Tradicionalni vs alternativni podaci</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d493368e-cb62-462e-9026-c0c44b2fbda6">Najznačajniji nalazi</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e8c83c73-924a-4259-89b7-a34a35d3d3ab">Kome je namenjena platforma?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3dcd9344-849a-49f6-a010-ceacf274730b">Budućnost platforme</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5a716ff3-3e83-42be-9b8a-6d813e4d9cb7">O timu</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55f34ed1-1e59-454c-be0b-258166b34a3b">Kontakt</a></div></nav><h1 id="ef08de05-268a-4ec3-a3c2-4ffda4203ec7" class="">Naša ideja</h1><p id="99ce0389-4a55-4121-9b4f-8c776534b2a5" class="">Projekat „Daljinska detekcija (de)populacionih procesa” realizovan je kao jedno od pobedničkih rešenja na izazov „Podacima do boljeg razumevanja procesa depopulacije” koji je objavio <mark class="highlight-blue"><a href="https://www.rs.undp.org/content/serbia/sr/home.html">Program Ujedinjenih nacija za razvoj (UNDP)</a></mark> i <mark class="highlight-blue"><a href="https://serbia.unfpa.org/">Populacioni fond UN (UNFPA)</a></mark> u Srbiji. Osnovna ideja projekta je identifikacija i sagledavanje procesa depopulacije na različitim nivoima teritorijalne organizacije Republike Srbije, primenom setova podataka nastalih metodama daljinske detekcije. Naša ideja podrazumeva formiranje trajne infrastrukture, bazirane na različitim skupovima podataka, u cilju uspostavljanja jedinstvenog “user-friendly” okruženja za identifikaciju, sagledavanje i praćenje vremenske i prostorne ekspresije procesa depopulacije u Srbiji.</p><p id="fc1356dc-1466-43d1-b4cf-413380e1eb2e" class="">Realizacija ideje se ogleda u kreiranju online servisa koji bi pružio osnovu za dalja i detaljna istraživanja depopulacije i drugih srodnih procesa i pojava, kreiranju smernica za donošenje zaključaka od značaja za planiranje razvoja, ali i opštu informisanost u domenu naseljenosti teritorije Srbije. Korisnicima je dostupan set od 12 indikatora sa interaktivnim kartografskim prikazima, uz mogućnost odabira prostorne i vremenske komponente, za potrebe dobijanja različitih informacija o stanju i promenama u populacionim procesima u Srbiji. Takođe, za napredniju pretragu, pružene informacije se odnose na korišćene setove podataka, dostupne za preuzimanje, kao i metodološki okvir i tehničke smernice za dobijanje indikatora, koji mogu poslužiti kao baza za dalja istraživanja.</p><h1 id="55d8e141-5144-4d8b-9dff-d5ad7810bb0a" class="">Šta je daljinska detekcija?</h1><p id="11f01984-d1e8-42e8-a7c0-722bfa9ed7ca" class="">Daljinska detekcija obuhvata skup metoda koje omogućavaju prikupljanje informacija bez direktnog, fizičkog kontakta sa ispitivanom pojavom ili objektom registrovanjem emitovane ili odbijene energije (satelitska osmatranja, aerosnimanja, itd.), a zatim i obradom i analizom tako dobijenih informacija. Geoprostorni podaci nastali primenom metoda daljinske detekcije, imaju širok spektar primene u različitim istraživanjima. Sa aspekta izučavanja (de)populacionih pojava i procesa, od velikog značaja su podaci o prostornoj distribuciji stanovnišva, izgrađenosti prostora, morfometriji terena, infrastrukturnim elementima u prostoru, populacionoj i ekonomskoj aktivnosti, mereno intenzitetom emitovane svetlosti sa Zemljine površine, i sl. Ovakvi podaci poseduju visok nivo prostorne i vremenske detaljnosti čime se otvaraju nove mogućnosti za kvantitativnu i kvalitativnu analizu.</p><h1 id="85293527-7dad-49e9-ae84-084df5197317" class="">Metodološki okvir</h1><p id="5b5a4fa9-6efc-4f8c-a957-c635906fd089" class="">Primena podataka nastalih metodama daljinske detekcije u proučavanju (de)populacionih procesa omogućava da se prevaziđu ograničenja i dopune tradicionalni izvori podataka (npr. Popis stanovništva). Prednost korišćenja pomenutih izvora, prostorno i vremenski osetljivih podataka, je mogućnost kontinuiranog praćenja kretanja broja stanovnika. Koristeći satelitske snimke i izvore podataka koji se baziraju na daljinskoj detekciji omogućeno je praćenje populacione dinamike sa prostornom rezolucijom od nekoliko stotina metara (npr. polja veličine 250 x 250 m) do nivoa naselja i opština. U tu svrhu kreiran je set od 12 indikatora koji na direktan ili indirektan način upućuju na depopulaciju, primenom pojedinačnih i/ili ukrštanjem različitih izvora podataka, kako bi se omogućila identifikacija, vizualizacija i tumačenje (de)populacionih promena.</p><p id="1b51f4cc-fc08-485c-be03-1e1a6a682fcf" class="">Neki od izabranih indikatora utemeljeni su u naučnoj praksi i koriste se za sagledavanje i praćenje populacionih promena (indeks promene broja stanovnika, gustina naseljenosti), kao i njenih prostornih manifestacija, dok su drugi atipični i kreirani za potrebe ove platforme, u svrhu otkrivanja uzroka depopulacije i transformacije prostora pod uticajem promena u naseljenosti (noćna svetla, sezonalnost u naseljavanju, distribucija stanovništva po hipsometrijskim pojasevima, pristupačnost, promene u nameni zemljišta i sl.). Radi lakšeg sagledavanja i razumevanja ponuđenih indikatora, izvršena je njihova klasifikacija u četiri kategorije:</p><ul id="a3d5e0b6-630f-415b-a14a-9f48545218d2" class="bulleted-list"><li><strong>Demografski indikatori</strong> bazirani su na podacima o broju stanovnika i promeni u višedecenijskom periodu, kao konkretno merljivim i shvatljivim podacima kojim identifikujemo i pratimo (de)populacione promene. Novina kod ove grupe kvantitativnih pokazatelja podrazumeva korišćenje prostorno preciznijih podataka baziranih na kvantifikaciji i prikazu broja stanovnika po gridu, kao izabrane prostorne jedinice. Kako su populacioni pokazatelji osnova za istraživanje procesa depopulacije, na njima počivaju, odnosno kombinovani su sa drugim podacima sa kojima formiraju neke od predloženih indikatora. Ovoj grupi pripada dva indikatora: Starosna struktura stanovništva prema visinskim zonama, 2011 i Indeks promene broja stanovnika, 2015/1975.</li></ul><ul id="ca0b80f6-e617-4d54-9956-bf0ccac7a977" class="bulleted-list"><li>Grupa <strong>(urbo)morfoloških indikatora</strong> u svojoj osnovi sadrže podatke o stanovnišvu, dok je fokus direktno usmeren na distribuciju stanovništva u prostoru. Radi utvrđivanja demografskog potencijala nekog prostora i pristupanju rešavanja konkretnih problema u vezi sa tim, relevantno je imati saznanja o prostornoj distribuciji stanovništva, u kojoj meri i gde je koncentrisano na postojećem izgrađenom tkivu. Značajna novina koju donosi ova grupa indikatora odnosi se na uključivanje podataka o izgrađenosti prostora, stepenu njegove iskorišćenosti i zauzetosti (privremene ili trajne), na osnovu kojih se ujedno sagledava i populaciona aktivnost. Poseban kuriozitet ove grupe indikatora predstavlja indikator za identifikaciju privremeno ili trajno napuštenih objekata, kojim se jednostavno i jasno ukazuje na proces depopulacije na prostoru Srbije. Ovoj grupi pripada tri indikatora: Gustina naseljenosti u Srbiji, 2015, Indeks promene izgrađenosti, 2014/1975 i Trajno i privremeno napušteni objekti kao pokazatelj depopulacionih područja, 2015.</li></ul><ul id="e737a412-c913-4320-b0c5-431eca63fc9b" class="bulleted-list"><li>Grupa <strong>(geo)prostornih indikatora</strong> je najbrojnija, obuhvatajući one kojima se izražava neka promena u prostoru i dovodi direktno ili indirektno u vezu sa populacionim procesima. Jedan od pomenutih indikatora je visinska zonalnost, koji je stavljen u odnos sa demografskom starošću, distribucijom naselja i stanovništva. Ovaj indikator značajan je iz razloga što omogućava ispitivanje davno utvrđenih teza da su „viši, planinski prostori demografski stariji i demografski ugroženi”, što je u ovom slučaju moguće koristeći podatke visoke prostorne rezolucije. Takođe, značajna inovacija je uvođenje noćnih svetala, prikazanim kroz dijapazon intenziteta radijanse i distribucije u prostoru, u funkciji sagledavanja procesa depopulacije i karaktera naseljenosti (sezonalnosti), kao i praćenje populacione i ekonomske aktivnosti stanovništva. Horizontalna perspektiva prostorne komponente iskazana je kroz razvijenost putne mreže, kao jednog od faktora koji utiču na demografski potencijal prostora i pruža osnovu za proučavanje prostorne „izolovanosti”. Ovoj grupi pripada četiri indikatora: Hipsometrijska struktura (visinska zonalnost) opština i naselja, Noćna svetla, Sezonski karakter naselja i Hypsometric Structure (Altitudinal Zonality) of Municipalities and Settlements.</li></ul><ul id="0e801567-9021-4930-a6e5-156fff9676eb" class="bulleted-list"><li>Grupa <strong>kompozitnih indikatora</strong> izdvojena je zasebno jer počiva na kombinaciji podataka različitog tipa, te istovremeno ukazuju na prostorne, morfološke i populacione promene. Radi ilustracije mogućnosti njihove upotrebe, izvršeno je preklapanje gustine naseljenosti po gridu i hipsometrijske strukture, populacionih promena sa pristupačnošću opštinskim centrima i namene zemljišta sa naglaskom na konverziju zemljišta ka prirodnim ekosistemima kao pokazatelja umanjene populacione i/ili ekonomske aktivnosti. Ovakvi indikatori su atipični u istraživanju populacionih promena, te predstavljaju doprinos postojećoj naučnoj metodologiji. Ovoj grupi pripada tri indikatora: Promena gustine naseljenosti po visinskim pojasevima, Pristupačnost kao determinanta depopulacije i Namena zemljišta u funkciji populacionih promena.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e09fb6ac-cc80-4c18-baf3-cd13cec80d11"><div style="font-size:1.5em"><span class="icon">🔗</span></div><div style="width:100%">Pogledajte listu indikatora <mark class="highlight-blue"><a href="Daljinska%20detekcija%20(de)populacionih%20procesa%20u%20Srb%20fafc0fd88d204a09ac4d26b6d236dae8.html">ovde</a></mark>.
+Tehnička dokumentacija sa metodologijom izračunavanja za svaki indicator (file Meta) je raspoloživa <mark class="highlight-blue"><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html">ovde</a></mark>.
+Preuzmite indikatore u nekom od raspoloživih formata (GeoTIFF, Shapefile, TXT) <mark class="highlight-blue"><a href="Preuzimanje%20podataka%20Download%20data%2009f5513e55dd4ab38e7363c69ad4214c.html">ovde</a></mark>.</div></figure><h1 id="0a03d0d0-4893-4b0b-a8b2-db165992f191" class="">Tradicionalni vs alternativni podaci</h1><p id="8703ac5c-c331-4df9-872c-23dde48e5f1c" class="">Demografski procesi u Srbiji tradicionalno se iskazuju putem kvantitativnih promena registrovanih u međupopisnom periodu. Takvom pristupu nedostaje mogućnost „spuštanja” na niži prostorni nivo, precizna identifikacija pojava i promena u prostoru, kao i ukrštanje sa drugim tipovima podataka koji bi ukazali na strukturu procesa i njegovu dinamiku. S druge strane, uvođenjem alternativnih izvora podataka generalizacija je minimizirana, omogućeno je „spuštanje” na mikro nivo (niže od statističkih i administrativnih prostornih jedinica), pruža se uvid u mikropodatak koji je moguće dodati u vidu atributa posmatranoj pojavi i procesu. U tom smislu, ogleda se prednost ovde predstavljenih setova podataka, okarakterisanih kao alternativni.</p><h1 id="d493368e-cb62-462e-9026-c0c44b2fbda6" class="">Najznačajniji nalazi</h1><ul id="fff46cbd-8b4c-4467-be8e-b82887013444" class="bulleted-list"><li>Za potrebe Projekta “Daljinska detekcija (de)populacionih procesa u Srbiji” uspostavljen je set od 12 indikatora;;</li></ul><ul id="94dcc143-825a-47f1-bf6e-3b7cec14b835" class="bulleted-list"><li>Korišćeni indikatori se mogu klasifikovati u dve grupe, prva podrazumeva tipične, tradicionalne indikatore, koji su se i do sada koristili u izučavanju (de)populacionih procesa, a u drugoj su atipični, moderni indikatori, bazirani na inovativnom ili modifikovanom pristupu izučavanju populacionih promena;</li></ul><ul id="0968f78c-8cdd-4aad-80e5-2c0da0a5b00e" class="bulleted-list"><li>Korišćeni indikatori su bazirani na alternativnim izvorima podataka;</li></ul><ul id="5d458698-69b3-495b-996a-9a793fb897fd" class="bulleted-list"><li>Veća prostorna i vremenska osetljivost koju nude alternativni podaci, omogućava šire sagledavanje depopulacije, njenih prostornih odlika, faktora koji na nju direktno ili indirektno utiču, kao i posledica koje su rezultat smanjenja broja stanovnika na nekom prostoru;</li></ul><ul id="8e06ba64-6d53-4fb8-bfef-2882ac3b18e6" class="bulleted-list"><li>Set podataka o stanovništvu, korišćen za dobijanje pojedinih indikatora, koji se baziraju na prostornoj distribuciji stanovnika, izražena je kroz broj stanovnika po grid ćeliji, kao preciznijem i tačnijem podatku za sagledavanje procesa depopulacije;</li></ul><ul id="4eb9e075-0a9e-4195-a90c-5c3449ddad98" class="bulleted-list"><li>Primena satelitskih snimaka noćnih svetala, kao inovativni pristup, je pružila upečatljive rezultate pri detektovanju prostorne disperzije stanovništva i aktivnosti, kao i njihovih trendova u određenom vremenskom periodu ili sezonskih promena;</li></ul><ul id="ab809b7a-ea27-48ce-8ef8-deab59969db8" class="bulleted-list"><li>Demografski indikatori su omogućili sagledavanje vremenske i strukturne komponente depopulacije. Ukazali su da: (1) povećanjem nadmorske visine raste i udeo starih lica, što je posebno naglašeno u brdsko-planinskim predelima, dok je u nižim terenima, pomenuta uslovljenost slabijeg intenziteta; (2) populacione promene u Srbiji podrazumevaju smanjenje broja stanovnika u periodu 1975-2015., posebno izražene u perifernim zonama južne Srbije, kako na planinskom području, tako i u manjim urbanim sredinama, koje postepeno gube svoju vitalnost, dok je povećanje broja stanovnika karakteristično prevashodno za urbane sredine;</li></ul><ul id="97c9cd96-4df7-4f1c-86fb-7a907355416a" class="bulleted-list"><li>(Urbo)morfološkim indikatorima sagledane su posledice depopulacije izražene u prostoru, koje mogu poslužiti za delimitaciju depopulacionih zona. Na osnovu ovih indikatora istaknuto je da: (1) mala gustina naseljenosti je obeležje obodnih, perifernih delova Srbije, izloženih kontinuiranim i intenzivnim negativnim demografskim trendovima, dok su visoko urbane sredine i frekventni saobraćajni pravci identifikovani kao zone koncentracije stanovništva u dužem periodu; (2) najniža koncentracija stanovništva na izgrađenom tkivu identifikovane su na području istočne i jugoistočne Srbije, u vidu sitnih areala izgrađenih površina gotovo tačkastog prostornog ispoljavanja, dok su najveće vrednosti u urbanim sredinama i prigradskim pojasevima. S obzirom da nisku koncentraciju stanovništva karakteriše slaba izgrađenost, transformacija prostora “izostaje”; (4) zone potencijalno najizloženije trendu napuštanja objekata (trajno ili privremeno) su: (a) tradicionalno depopulacione opštine, (b) opštine Istočne Srbije i Pomoravlja u kojima dominira sezonska radna emigracija stanovnika, (c) prostor pograničnih opština, (d) planinske opštine i (e) pojedine opštine na prostoru Kosova i Metohije;</li></ul><ul id="1ce98dd9-8ea4-4d99-914d-b182db2b4fe7" class="bulleted-list"><li>(Geo)prostorni indikatori poslužili su za analizu prostorne komponente depopulacije. Na osnovu njih je utvrđeno da: (1) granica od 800 m n. v. predstavlja gornji limit za visinsku distribuciju naselja, iznad koje su naselja demografski ugrožena; (2) prostore sa depopulacionim obeležjima karakteriše i najslabiji intenzitet osvetljenosti; (3) sezonsko kretanje stanovnika, privremeno naseljavanje i povremeno korišćenje stambenih i ekonomskih objekata posebno se uočavaju u turističkim i vikend naseljima u periodu zima-leto, kao i na prostorima agrarne namene; (4) sa povećanjem nadmorske visine, broj naselja velike gustine naseljenosti opada, tako da ravničarskom pojasu pripada 21,3% naselja, isključivo brdskog karaktera je 26,5% naselja, a iznad 1500 m n.v. njihov broj je značajno redukovan (delovi 115 naselja);</li></ul><ul id="59d2aefc-11c6-44a5-8f7c-7173dc44efd8" class="bulleted-list"><li>Kompozitnim indikatorima, koji istovremeno tretiraju više komponenti procesa depopulacije, utvrđeno je da: (1) približno 40.5% naselja Srbije je nepovoljne saobraćajne opremljenosti što doprinosi njihovoj izolovanosti, a indirektno i procesu depopulacije; (2) usled slabe pristupačnosti i nepovoljnog demografskog trenda, najnepovoljnije odlike obeležile su pogranične delove zemlje kao i obodne delove opština, jer sa udaljavanjem od centra dolazi i do populacionog pražnjenja prostora, karakteristično za čak trećinu ukupnog broja naselja u Srbiji (32,1%); (3) transformacije kultivisanog zemljišta ka tranzicionim kategorijama mešovitog, travnatog i šumskog ekosistema, direktno ukazuje na slabu populacionu aktivnost ili njeno potpuno odsustvo.</li></ul><h1 id="e8c83c73-924a-4259-89b7-a34a35d3d3ab" class="">Kome je namenjena platforma?</h1><p id="49760c69-5d97-403a-9914-9be0f7a934f0" class="">Sadržaj platforme može poslužiti svim zainteresovanim pojedincima i grupama, kao i stručnoj i naučnoj zajednici za razvoj daljih istraživanja, kreiranje dokumenata razvojnog planiranja i uspostavljanje razvojnih politika od lokalnog do nacionalnog nivoa. Visok nivo „prostorne detaljnosti” u razmeštaju populacije, odnosno stepenu depopulacije/urbanizacije prostora je veoma značajan za uspostavljanje efikasnog integralnog društvenog sistema planiranja i upravljanja.</p><h1 id="3dcd9344-849a-49f6-a010-ceacf274730b" class="">Budućnost platforme</h1><p id="d36dab96-7956-434c-b850-2bdabfbb795e" class="">Raspoloživi setovi podataka omogućavaju dalje analize, metematičko-statističko modelovanje i nadogradnju novim izvorima podataka. Lejeri visoke prostorne rezolucije koji su rezultat projekta mogu poslužiti kao ulazni podaci za sve modele gde se kao jedna od varijabla uzma prostorna distribucija stanovništva, dinamika promene stanovništva, kao i transformacija u izgrađenosti i korišćenju zemljišta usled promena u naseljenosti prostora. Platforma kao open data koncept u budućnosti podržava uvođenje novih setova multidisciplinarnih podataka sa ciljem detaljnijeg, jasnijeg i raznovrsnijeg sagledavanja procesa koji se odvijaju na teritoriji Srbije. Integrisanje novih rezultata je ključni zadatak za budućnost.</p><p id="5eee1ab9-4b0f-4aa7-9e02-f5fc2995ed33" class="">Postojanje i unapređenje platforme tokom predstojećeg perioda nudi kontinuirano praćenje depopulacionih procesa na teritoriji Srbije. Mogućnost istraživanja demografskih procesa i pojava na mikro nivou i koristeći se mikro-podacima nudi preciznije sagledavanje pojava, mogućnost otkrivanja uzroka i sagledavanje posledica.</p><h1 id="5a716ff3-3e83-42be-9b8a-6d813e4d9cb7" class="">O timu</h1><p id="453dc746-d981-44b7-87e9-93315a42d074" class="">Multidisciplinarni tim „Geoanalitičari” je sačinjen od šest članova: </p><ul id="52c90d9b-fb0f-4c8a-9f5c-ddac99f935a8" class="bulleted-list"><li>geograf Gorica Stanojević, </li></ul><ul id="03c1e291-0d7f-404a-a2e7-d8286ebe412a" class="bulleted-list"><li>demograf Vlasta Kokotović Kanazir, </li></ul><ul id="8aabd0a3-7a93-4b4c-b522-462e4b019aeb" class="bulleted-list"><li>prostorni planeri Marija Drobnjaković, Milena Panić i Dejan Doljak,</li></ul><ul id="3d7a13aa-617b-4af0-8b04-5343aa34a8f8" class="bulleted-list"><li>web programer Nikola Petković. </li></ul><p id="d594d6c7-bb10-4a6a-a890-1b1a01493177" class="">Članovi tima su okupljeni oko ideje koja ima za cilj formiranje otvorenog seta podataka (depopulaciona područja, gustina naseljenosti, udaljenost od značajnijih funkcionalnih centara, pristupačnost, morfološki elementi naselja, i sl.), koji će omogućiti identifikaciju, vizuelizaciju i interpretaciju nastalih promena uz mogućnost njihovog preuzimanja za dalju analizu i obradu putem ovog web sajta.</p><p id="877c3b74-e023-491d-84f6-163ce76dec4e" class="">
+</p><p id="da0d2091-381e-46bc-9177-cc26b00c4dd9" class=""><a href=""><mark class="highlight-blue">Nazad na vrh strane ↑</mark></a></p><hr id="7a10f8e4-bae7-4192-abef-a1f0f386e338"/><h1 id="55f34ed1-1e59-454c-be0b-258166b34a3b" class="">Kontakt</h1><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="1d2a6c3c-39f8-47a5-9fdf-799f98f2ee69"><div style="font-size:1.5em"><span class="icon">✋</span></div><div style="width:100%">Nećemo vam slati <em>spam</em> — nikada.</div></figure><figure id="04fe0917-9877-4be6-ba70-61a9bf9aadc4"><div class="source"><a href="https://chilipepper.io/form/medium-diced-birdeye-4213cfc5-550e-47c1-b6a9-49f908b0107f">https://chilipepper.io/form/medium-diced-birdeye-4213cfc5-550e-47c1-b6a9-49f908b0107f</a></div></figure><hr id="ea87e89d-ab38-4804-8c97-ba24c0a504e5"/><div id="c099193d-d4c6-4708-b1f9-e6a8678c886d" class="column-list"><div id="43579e43-933e-448d-a7c9-59ee7138ac98" style="width:4.166666666666666%" class="column"><figure id="6f425098-6850-4276-ad45-c25609d92c02" class="image"><a href="Untitled.png"><img style="width:121px" src="Untitled.png"/></a></figure></div><div id="a37c6b59-6724-4f4d-a027-362f02fd269f" style="width:8.333333333333332%" class="column"><figure id="079227f3-c746-4359-b0f4-222547d42660" class="image"><a href="Untitled%201.png"><img style="width:210px" src="Untitled%201.png"/></a></figure></div><div id="9ee4a4b4-fda9-418e-be15-46d10a9a3bcd" style="width:87.5%" class="column"><p id="47d21b76-eca9-4671-ba58-d098094be45a" class="block-color-gray">Ovaj sajt je izrađen uz podršku Programa Ujedinjenih nacija za razvoj (UNDP) i Populacionog fonda UN (UNFPA) u Srbiji, u okviru izazova „Podacima do boljeg razumevanja procesa depopulacije”. Sadržaj sajta je isključiva odgovornost tima „Geoanalitičari” i on ne mora nužno da odražava stavove UNDP-a ni UNFPA.</p><p id="0e79c753-9e93-4b84-9ac2-d1637ff50bdd" class="">
+</p><p id="55c6bca2-17bb-4158-a16e-f8941604b145" class="">
+</p></div></div><p id="c28b39c6-8dcc-4d42-8aa6-db2d79e9dcbb" class="">
+</p></div></article></body></html>
